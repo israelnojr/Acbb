@@ -20,28 +20,48 @@ class UsersTableSeeder extends Seeder
 
         $supserAdminRole = Role::where('name', 'superadmin')->first();
         $adminRole = Role::where('name', 'admin')->first();
-        $customerRole = Role::where('name', 'customer')->first();
+        $userRole = Role::where('name', 'user')->first();
+        $ZoneCodinatorRole = Role::where('name', 'zone_cordinator')->first();
 
         $supserAdmin = User::create([
             'name' => 'Super Admin',
+            'sponsor_user_id' => 1,
+            'local_government_id' => 73,
+            'state_of_origin' => 'anambra',
             'email' => 'super@admin.com',
             'password' => Hash::make('password')
         ]); 
 
         $admin = User::create([
             'name' => 'Admin User',
+            'sponsor_user_id' => 1,
+            'local_government_id' => 73,
+            'state_of_origin' => 'anambra',
             'email' => 'admin@admin.com',
             'password' => Hash::make('password')
         ]);
 
-        $customer = User::create([
-            'name' => 'Customer User',
-            'email' => 'customer@customer.com',
+        $user = User::create([
+            'name' => 'User User',
+            'sponsor_user_id' => 1,
+            'local_government_id' => 73,
+            'state_of_origin' => 'anambra',
+            'email' => 'user@user',
+            'password' => Hash::make('password')
+        ]);
+
+        $cordinator = User::create([
+            'name' => 'Cordinator User',
+            'sponsor_user_id' => 1,
+            'local_government_id' => 73,
+            'state_of_origin' => 'anambra',
+            'email' => 'cordinator@cordinator',
             'password' => Hash::make('password')
         ]);
 
         $supserAdmin->roles()->attach($supserAdminRole);
         $admin->roles()->attach($adminRole);
-        $customer->roles()->attach($customerRole);
+        $user->roles()->attach($userRole);
+        $cordinator->roles()->attach($ZoneCodinatorRole);
     }
 }

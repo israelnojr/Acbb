@@ -20,7 +20,10 @@ class RolesTableSeeder extends Seeder
             'name' => 'admin'
         ]);
         Role::create([
-            'name' => 'customer'
+            'name' => 'user'
+        ]);
+        Role::create([
+            'name' => 'zone_cordinator'
         ]);
     }
 }

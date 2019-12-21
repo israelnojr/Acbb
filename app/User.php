@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'state_of_origin', 'sponsor', 'local_government'
     ];
 
     /**
@@ -44,9 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         return $this->belongsToMany('App\Role');
     }
 
-    public function orders()
+    public function localGovern()
     {
-        return $this->hasMany('App\Order');
+        return $this->belongsTo('App\Local_government');
     }
 
     public function contact()

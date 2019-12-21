@@ -32,6 +32,10 @@ class LoginController extends Controller
            $this->redirectTo = '/admin/users';
            return $this->redirectTo;
         }
+        elseif(Auth::user()->hasAnyRoles(['zone_cordinator'])){
+            $this->redirectTo = '/admin/users/zone';
+            return $this->redirectTo;
+        }
         else{
             $this->redirectTo = '/';
             return $this->redirectTo;
