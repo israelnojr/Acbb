@@ -29,7 +29,7 @@
 </head>
 
     <body class="">
-        @include('layouts.backend.partials.sidebar')
+            @include('layouts.backend.partials.sidebar')
         <div id="right-panel" class="right-panel">
             @include('layouts.backend.partials.topbar')
             @include('layouts.backend.partials.breadcrumbs')

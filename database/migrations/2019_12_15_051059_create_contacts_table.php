@@ -23,6 +23,8 @@ class CreateContactsTable extends Migration
             $table->boolean('completed')->default(false);
             $table->text('message');
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

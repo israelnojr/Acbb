@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,9 +46,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return view('admin.users.profile', compact('user'));
+        $profile = Profile::find($id);
+        // dd($profile);
+        return view('admin.users.profile', compact('profile'));
     }
 
     /**

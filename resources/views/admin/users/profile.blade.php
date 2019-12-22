@@ -1,8 +1,8 @@
 @extends('layouts.backend.app')
 
 @section('content')
-    <div class="col-xl-12 col-lg-12">
-        <section class="card">
+    <div class="col-xl-12 col-lg-12 col-sm-12">
+        <section class="card mt-3" >
             <div class="twt-feed blue-bg">
                 <div class="corner-ribon black-ribon">
                     <i class="fa fa-twitter"></i>
@@ -11,11 +11,11 @@
 
                 <div class="media">
                     <a href="#">
-                        <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                        <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{asset('backend/images/admin.jpg')}}">
                     </a>
                     <div class="media-body">
-                        <h2 class="text-white display-6">{{ $user->name }}</h2>
-                        <p class="text-light">Project Manager</p>
+                        <h2 class="text-white display-6">{{ $profile->user->name }}</h2>
+                        <p class="text-light">{{ $profile->user->roles()->get()->pluck('name')}}</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <footer class="twt-footer">
                 <a href="#"><i class="fa fa-camera"></i></a>
                 <a href="#"><i class="fa fa-map-marker"></i></a>
-                New Castle, UK
+                {{ $profile->user->state_of_origin }}
                 <span class="pull-right">
                     32
                 </span>

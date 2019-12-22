@@ -37,7 +37,7 @@ class LoginController extends Controller
             return $this->redirectTo;
         }
         else{
-            $this->redirectTo = '/';
+            $this->redirectTo = 'user/profile/' . Auth::user()->id;
             return $this->redirectTo;
         }
     }

@@ -3,10 +3,13 @@
 namespace App;
 
 use auth;
+use App\Role;
+use App\Profile;
+use App\Local_government;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
@@ -18,7 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'state_of_origin', 'sponsor_user_id', 'local_government_id'
+        'name', 'email', 'password', 'state_of_origin', 'sponsor_user_id', 
+        'local_government_id','username'
     ];
 
     /**
@@ -41,17 +45,22 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     public function roles()
     {
-        return $this->belongsToMany('App\Role');
+        return $this->belongsToMany(Role::class);
     }
 
     public function localGovern()
     {
-        return $this->belongsTo('App\Local_government');
+        return $this->belongsTo(Local_government::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public function contact()
     {
-        return $this->hasMany('App\Contact');
+        return $this->hasMany(Contact::class);
     }
 
     public function hasAnyRoles($roles)

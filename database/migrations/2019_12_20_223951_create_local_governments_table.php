@@ -18,6 +18,8 @@ class CreateLocalGovernmentsTable extends Migration
             $table->bigInteger('state_id')->unsigned();
             $table->string('name');
             $table->timestamps();
+
+            $table->index('state_id');
         });
     }
 

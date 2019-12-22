@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('dashboardPermission', function($user){
-            return $user->hasAnyRoles(['superadmin', 'admin']);
+            return $user->hasAnyRoles(['superadmin', 'admin', 'zone_cordinator']);
         });
 
         Gate::define('edit-user', function($user){

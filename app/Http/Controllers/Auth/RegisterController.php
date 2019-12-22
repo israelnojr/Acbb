@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Role;
 use App\User;
 use App\State;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -67,11 +68,14 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        // dd($data);
+        $email = $data['email'];
+        $username = Str::slug($data['name']) . '-'. $email;
+        //  dd($username);
         $user = User::create([
             'name' => $data['name'],
             'sponsor_user_id' => $data['sponsor_user_id'],
             'state_of_origin' => $data['state_of_origin'],
+            'username' => $username,
             'local_government_id' => $data['local_government_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Local_government;
 use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
@@ -12,7 +13,7 @@ class State extends Model
 
     public function localGovernments()
     {
-    return $this->hasMany('App\Local_government');
+    return $this->hasMany(Local_government::class);
     }
 
 }

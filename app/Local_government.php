@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\User;
+use App\State;
 use Illuminate\Database\Eloquent\Model;
 
 class Local_government extends Model
@@ -10,13 +12,13 @@ class Local_government extends Model
         'state_id', 'name'
     ];
 
-    public function State()
+    public function state()
     {
-        return $this->hasOne('App\State');
+        return $this->hasOne(State::class);
     }
 
-    public function Users()
+    public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->hasMany(User::class);
     }
 }

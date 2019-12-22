@@ -2,6 +2,7 @@
 
 use App\Role;
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
 
         $supserAdmin = User::create([
             'name' => 'Super Admin',
+            'username' => 'super-admin',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
             'state_of_origin' => 'anambra',
@@ -34,6 +36,7 @@ class UsersTableSeeder extends Seeder
 
         $admin = User::create([
             'name' => 'Admin User',
+            'username' => 'admin-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
             'state_of_origin' => 'anambra',
@@ -43,19 +46,21 @@ class UsersTableSeeder extends Seeder
 
         $user = User::create([
             'name' => 'User User',
+            'username' => 'user-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
             'state_of_origin' => 'anambra',
-            'email' => 'user@user',
+            'email' => 'user@user.com',
             'password' => Hash::make('password')
         ]);
 
         $cordinator = User::create([
             'name' => 'Cordinator User',
+            'username' => 'cordinator-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
             'state_of_origin' => 'anambra',
-            'email' => 'cordinator@cordinator',
+            'email' => 'cordinator@cordinator.com',
             'password' => Hash::make('password')
         ]);
 
