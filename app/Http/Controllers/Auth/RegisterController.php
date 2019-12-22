@@ -6,6 +6,7 @@ use App\Role;
 use App\User;
 use App\State;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -34,13 +35,17 @@ class RegisterController extends Controller
     public function redirectTo()
     {
         if(\Auth::user()->hasAnyRoles(['superadmin', 'admin'])){
-           $this->redirectTo = '/admin/users';
-           return $this->redirectTo;
-        }
-        else{
-            $this->redirectTo = '/';
+            $this->redirectTo = '/admin/users';
             return $this->redirectTo;
-        }
+         }
+         elseif(Auth::user()->hasAnyRoles(['zone_cordinator'])){
+             $this->redirectTo = '/admin/users/zone';
+             return $this->redirectTo;
+         }
+         else{
+             $this->redirectTo = '/';
+             return $this->redirectTo;
+         }
     }
 
     public function __construct()
@@ -52,9 +57,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'sponsor' => ['required'],
+            'sponsor_user_id' => ['required'],
             'state_of_origin' => ['required'],
-            'local_government' => ['required'],
+            'local_government_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -65,9 +70,9 @@ class RegisterController extends Controller
         // dd($data);
         $user = User::create([
             'name' => $data['name'],
-            'sponsor' => $data['sponsor'],
+            'sponsor_user_id' => $data['sponsor_user_id'],
             'state_of_origin' => $data['state_of_origin'],
-            'local_government' => $data['local_government'],
+            'local_government_id' => $data['local_government_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

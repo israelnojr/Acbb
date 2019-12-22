@@ -17,7 +17,7 @@ class ZoneController extends Controller
     public function index()
     {
         $zoneManager = Auth::user()->id;
-        $users = User::where('sponsor_user_id', $zoneManager)->paginate(5);
+        $users = User::where('sponsor_user_id', $zoneManager)->get();
         return view('admin.zone.index', compact('users'));
     }
 

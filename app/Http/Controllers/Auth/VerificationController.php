@@ -30,13 +30,17 @@ class VerificationController extends Controller
     public function redirectTo()
     {
         if(\Auth::user()->hasAnyRoles(['superadmin', 'admin'])){
-           $this->redirectTo = '/admin/users';
-           return $this->redirectTo;
-        }
-        else{
-            $this->redirectTo = '/';
+            $this->redirectTo = '/admin/users';
             return $this->redirectTo;
-        }
+         }
+         elseif(Auth::user()->hasAnyRoles(['zone_cordinator'])){
+             $this->redirectTo = '/admin/users/zone';
+             return $this->redirectTo;
+         }
+         else{
+             $this->redirectTo = '/';
+             return $this->redirectTo;
+         }
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
@@ -32,8 +32,9 @@
                             @enderror
                         </div>
                     </div> -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-danger">Save</button>
+                    <div class="form-group d-flex">
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                        <a href="{{route('admin.users.index')}}" class="btn btn-danger">Back</a>
                     </div>
                    </form>
                 </div>

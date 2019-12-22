@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
-Auth::routes();
+// Auth::routes();
 
 // Authentication Routes...
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -37,6 +37,13 @@ Auth::routes();
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
     Route::post('local-post', 'UsersController@localGov')->name('local');
     Route::post('state-post', 'UsersController@States')->name('states');
+
+    Route::get('dashboard', 'UsersController@dashboard')->name('dashboard');
+    
     Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
     Route::resource('users/zone', 'ZoneController', ['except' => ['show', 'create', 'store']]);
+});
+
+Route::namespace('User')->prefix('user')->name('user.')->group( function(){
+    Route::resource('profile', 'ProfileController');
 });
