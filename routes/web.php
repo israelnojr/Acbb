@@ -41,7 +41,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
     Route::get('dashboard', 'UsersController@dashboard')->name('dashboard');
     
     Route::resource('users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+    Route::get('users/admin-users', 'UsersController@adminUsers')->name('admins');
     Route::resource('users/zone', 'ZoneController', ['except' => ['show', 'create', 'store']]);
+    Route::get('zone/managers', 'ZoneController@zonerManagers')->name('managers');
 });
 
 Route::namespace('User')->prefix('user')->name('user.')->group( function(){

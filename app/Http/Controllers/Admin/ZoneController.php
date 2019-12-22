@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,11 +22,11 @@ class ZoneController extends Controller
         return view('admin.zone.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function zonerManagers()
+    {
+        $zones = Role::where('name', 'zone_cordinator')->first()->users()->get();
+        return view('admin.zone.managers', compact('zones'));
+    }
     public function create()
     {
         //

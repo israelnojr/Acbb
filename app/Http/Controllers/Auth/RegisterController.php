@@ -44,8 +44,9 @@ class RegisterController extends Controller
              return $this->redirectTo;
          }
          else{
-             $this->redirectTo = '/';
-             return $this->redirectTo;
+            return '/';
+            //  $this->redirectTo = '/';
+            //  return $this->redirectTo;
          }
     }
 

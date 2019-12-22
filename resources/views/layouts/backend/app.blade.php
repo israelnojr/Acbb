@@ -22,17 +22,20 @@
     <link rel="stylesheet" href="{{ asset('backend/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset('backend/vendors/chosen/chosen.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
 
-    <body class="">
-            @include('layouts.backend.partials.sidebar')
-        <div id="right-panel" class="right-panel">
-            @include('layouts.backend.partials.topbar')
-            @include('layouts.backend.partials.breadcrumbs')
+        @if(Request::is('admin*') or Request::is('user*'))
+            <body class="">
+                @include('layouts.backend.partials.sidebar')
+            <div id="right-panel" class="right-panel">
+                @include('layouts.backend.partials.topbar')
+                @include('layouts.backend.partials.breadcrumbs')
+        @endif
             @yield('content')
         @include('layouts.backend.partials.footer')
         <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js')}}"></script>

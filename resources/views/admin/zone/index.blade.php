@@ -18,6 +18,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Local Gov</th>
+                                            <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -26,7 +27,10 @@
                                         <tr>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{ $user->local_government_id}}</td>
+                                            <td>{{ $user->localGovern->name}}</td>
+                                            <td> 
+                                                <a href="" class=" btn {{ $user->status == true ? 'btn-primary' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}} </a>
+                                            </td>
                                             <td class="d-flex justify-content-space-between"> 
                                                 <a href="{{ route('user.profile.show', $user->id)}}" class="btn btn-success">Show</a>
                                             </td>

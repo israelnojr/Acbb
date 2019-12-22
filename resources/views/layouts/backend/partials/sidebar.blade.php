@@ -21,9 +21,9 @@
                         <i class="menu-icon fa fa-laptop"></i>Manage Users</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="{{route('admin.users.index')}}">All Users</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Admin Users</a></li>
-                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Zoner Managers</a></li>
-                            <li><i class="fa fa-bars"></i><a href="{{route('admin.zone.index')}}">Users By Zone</a></li>       
+                            <li><i class="fa fa-id-badge"></i><a href="{{route('admin.admins')}}">Admin Users</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{route('admin.managers')}}">Zoner Managers</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{route('admin.zone.index')}}">Referrals</a></li>       
                         </ul>
                     </li>                  
                 </ul>

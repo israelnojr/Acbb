@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     public function localGovern()
     {
-        return $this->belongsTo(Local_government::class);
+        return $this->belongsTo('App\Local_government', 'local_government_id');
     }
 
     public function profile()

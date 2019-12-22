@@ -26,13 +26,12 @@ class UsersController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function adminUsers()
+    {
+        $admins = Role::where('name', 'admin')->first()->users()->get();
+        return view('admin.users.admins', compact('admins'));
+    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         if(Gate::denies('edit-user')){

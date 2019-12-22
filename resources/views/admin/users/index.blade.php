@@ -18,6 +18,8 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Role</th>
+                                            <th scope="col">Local Govern</th>
+                                            <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -27,6 +29,10 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
+                                        <td>{{ $user->localGovern->name}}</td>
+                                        <td> 
+                                            <a href="" class=" btn {{ $user->status == true ? 'btn-primary' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}} </a>
+                                        </td>
                                         <td class="d-flex justify-content-space-between"> 
                                             <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-success">Edit</a>
                                             <form action="{{route('admin.users.destroy', $user)}}" method="post">
