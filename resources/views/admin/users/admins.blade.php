@@ -32,11 +32,15 @@
                                             <a href="" class=" btn {{ $user->status == true ? 'btn-primary' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}} </a>
                                         </td>
                                         <td class="d-flex justify-content-space-between"> 
+                                            @can('edit-user')
                                             <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-success">Edit</a>
-                                            <form action="{{route('admin.users.destroy', $user)}}" method="post">
+                                            @endcan
+                                            @can('super-action')
+                                            <form action="{{route('admin.users.destroy', $user->id)}}" method="post">
                                                 @csrf() @method('delete')
                                                 <button type="submit" class="btn btn-danger ml-1 mr-1">Delete</button>
                                             </form>
+                                            @endcan
                                             <a href="{{ route('user.profile.show', $user->id)}}" class="btn btn-success">Show</a>
                                         </td>
                                     </tr>

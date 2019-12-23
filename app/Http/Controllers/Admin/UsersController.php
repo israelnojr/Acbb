@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Gate;
 use App\Role;
 use App\User;
-use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 class UsersController extends Controller
 {
     /**
@@ -19,15 +21,43 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
+    
+    //helper methods
+    // public function editUser()
+    // {
+    //     if(Gate::denies('edit-user')){
+    //         return redirect()->back()->with('warning', 'You not allowed to perform this action');
+    //     }
+    // }
+
+    // public function deleteUser()
+    // {
+    //     if(Gate::denies('delete-user')){
+    //         return redirect()->back()->with('warning', 'You not allowed to perform this action');
+    //     }
+    // }
+
     public function index()
     {
-        // $users = User::paginate(4);
-        $users = User::all();
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
+
+        if(Auth::user()->username == 'super-admin'){
+            $users = User::all();
+        }
+        else{
+            $users = User::where('username', '!=', 'super-admin')->get();
+        }
         return view('admin.users.index', compact('users'));
     }
 
     public function adminUsers()
     {
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
+
         $admins = Role::where('name', 'admin')->first()->users()->get();
         return view('admin.users.admins', compact('admins'));
     }
@@ -35,19 +65,16 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         if(Gate::denies('edit-user')){
-            return redirect()->route('admin.users.index')->with('warning', 'You not allowed to perform this action');
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
         }
-       $roles = Role::all();
+        if(Auth::user()->username == 'super-admin'){
+            $roles = Role::all();
+        }
+        else{ $roles = Role::where('name', '!=', 'superadmin' )->get();}
        return view('admin.users.edit', compact('user', 'roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, User $user)
     {
       $user->roles()->sync($request->roles);
@@ -58,15 +85,20 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         if(Gate::denies('delete-user')){
-            return redirect()->route('admin.users.index')->with('warning', 'You not allowed to perform this action');
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
         }
-       $user->roles()->detach();
-       $user->delete();
-       return redirect()->route('admin.users.index')->with('success', 'You\'ve Succesfffully deleted user');
+
+        $user->roles()->detach();
+        $user->delete();
+        return redirect()->back()->with('success', 'You\'ve Succesfffully deleted user');
     }
 
     public function dashboard()
     {
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
         return view('admin.dashboard');
     }
+
 }

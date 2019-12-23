@@ -45,8 +45,6 @@ class RegisterController extends Controller
          }
          else{
             return '/';
-            //  $this->redirectTo = '/';
-            //  return $this->redirectTo;
          }
     }
 

@@ -30,10 +30,14 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('edit-user', function($user){
-            return $user->hasRole('superadmin');
+            return $user->hasAnyRoles(['superadmin', 'admin']);
         });
 
         Gate::define('delete-user', function($user){
+            return $user->hasRole('superadmin');
+        });
+        
+        Gate::define('super-action', function($user){
             return $user->hasRole('superadmin');
         });
     }

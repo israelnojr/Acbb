@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ZoneController extends Controller
 {
@@ -17,6 +18,9 @@ class ZoneController extends Controller
 
     public function index()
     {
+        if(Gate::denies('dashboardPermission')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
         $zoneManager = Auth::user()->id;
         $users = User::where('sponsor_user_id', $zoneManager)->get();
         return view('admin.zone.index', compact('users'));
@@ -24,6 +28,9 @@ class ZoneController extends Controller
 
     public function zonerManagers()
     {
+        if(Gate::denies('dashboardPermission')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
         $zones = Role::where('name', 'zone_cordinator')->first()->users()->get();
         return view('admin.zone.managers', compact('zones'));
     }
@@ -32,57 +39,27 @@ class ZoneController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

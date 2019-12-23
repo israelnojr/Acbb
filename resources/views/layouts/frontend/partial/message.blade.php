@@ -1,23 +1,34 @@
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <div class="alert alert-danger flash">
-            <button type="button" aria-hidden="true" class="close close position" onclick="this.parentElement.style.display='none'">×</button>
-            <span>
-            <b> Danger - </b> {{ $error }}</span>
-        </div>
-    @endforeach
-@endif
-
 @if(session('success'))
-    <div class="alert alert-success flash">
-        <button type="button" aria-hidden="true" class="close  position" onclick="this.parentElement.style.display='none'">×</button>
-        <span><b> Success - </b> {{ session('success') }}</span>
+    <div class="col-sm-12 flash">
+        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-success">Sucess</span> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
     </div>
 @endif
 
 @if(session('warning'))
-    <div class="alert alert-warning flash">
-        <button type="button" aria-hidden="true" class="close  position" onclick="this.parentElement.style.display='none'">×</button>
-        <span><b> Warning - </b> {{ session('warning') }}</span>
+    <div class="col-sm-12 flash">
+        <div class="alert  alert-warning alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-warning">Warning</span> {{ session('warning') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
     </div>
+@endif
+
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="col-sm-12 flash">
+        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-danger">Danger</span> {{ $error }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    </div>
+    @endforeach
 @endif

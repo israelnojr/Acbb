@@ -11,34 +11,21 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
+class User extends Authenticatable 
+// implements MustVerifyEmail, CanResetPassword
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'state_of_origin', 'sponsor_user_id', 
-        'local_government_id','username'
+        'local_government_id','username','status'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+  
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -79,9 +66,15 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         }
         return false;
     }
-
-    // public function is_logged_in($user)
-    // {
-    //     return $this->user()->where('id', $user)->first();
-    // }
+    protected static function boot()
+    {
+        parent::boot();
+        static::created( function($user){
+            $user->profile()->create([
+                'user_id' => $user->id,
+                'bio' => "I'm ". $user->name,
+                'image' => "admin.jpg"
+            ]);
+        });
+    }
 }
