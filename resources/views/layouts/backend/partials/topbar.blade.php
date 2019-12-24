@@ -92,7 +92,8 @@
 
                 <!-- <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a> -->
 
-                <a class="nav-link" href="{{ route('user.profile.edit', Auth::user()->profile->id) }}" style="cursor: pointer;"><i class="fa fa-cog" style="cursor: pointer;"></i> Settings</a>
+                <a class="nav-link" href="{{ route('user.profile.edit', Auth::user()->profile->id) }}" style="cursor: pointer;">
+                <i class="fa fa-cog" style="cursor: pointer;"></i> Settings</a>
                 <a class="nav-link"  href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-power-off"></i> {{ __('Logout') }}
