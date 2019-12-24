@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
@@ -25,4 +26,5 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Town', 'town_id');
     }
+
 }

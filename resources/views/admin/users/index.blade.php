@@ -21,6 +21,7 @@
                                             <th scope="col">Local Govern</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">Online</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,6 +46,13 @@
                                             </form>
                                             @endcan
                                             <a href="{{ route('user.profile.show', $user->id)}}" class="btn btn-success">Show</a>
+                                        </td>
+                                        <td>
+                                            @if($user->isOnline())
+                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-success">Yes</a>
+                                            @else
+                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-danger">No</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

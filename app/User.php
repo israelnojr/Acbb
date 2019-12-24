@@ -2,10 +2,11 @@
 
 namespace App;
 
-use auth;
+use Auth;
 use App\Role;
 use App\Profile;
 use App\Local_government;
+use Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -76,5 +77,9 @@ class User extends Authenticatable
                 'image' => "admin.jpg"
             ]);
         });
+    }
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }
