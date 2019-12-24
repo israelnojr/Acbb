@@ -12,6 +12,8 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+
     <link rel="stylesheet" href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/vendors/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/vendors/themify-icons/css/themify-icons.css')}}">
@@ -30,14 +32,17 @@
 </head>
 
         @if(Request::is('admin*') or Request::is('user*'))
-            <body class="">
+    <body class="">
                 @include('layouts.backend.partials.sidebar')
-            <div id="right-panel" class="right-panel">
-                @include('layouts.backend.partials.topbar')
-                @include('layouts.backend.partials.breadcrumbs')
-        @endif
-            @yield('content')
-        @include('layouts.backend.partials.footer')
+                <div id="right-panel" class="right-panel">
+                    @include('layouts.backend.partials.topbar')
+                    @include('layouts.backend.partials.breadcrumbs')
+            @endif
+            <div id="">
+                @yield('content')
+            </div>
+            @include('layouts.backend.partials.footer')
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/message.js') }}" defer></script>
         
         <script src="{{ asset('backend/vendors/jquery/dist/jquery.min.js')}}"></script>
@@ -46,12 +51,12 @@
         <script src="{{ asset('backend/assets/js/main.js')}}"></script>
 
 
-        <script src="{{ asset('backend/vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
+        <!-- <script src="{{ asset('backend/vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
         <script src="{{ asset('backend/assets/js/dashboard.js')}}"></script>
         <script src="{{ asset('backend/assets/js/widgets.js')}}"></script>
         <script src="{{ asset('backend/vendors/jqvmap/dist/jquery.vmap.min.js')}}"></script>
         <script src="{{ asset('backend/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
-        <script src="{{ asset('backend/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+        <script src="{{ asset('backend/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script> -->
         
         <script src="{{ asset('backend/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{ asset('backend/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>

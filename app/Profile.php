@@ -14,8 +14,15 @@ class Profile extends Model
         'ward',
         'bio',
     ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function town()
+    {
+        return $this->belongsTo('App\Town', 'town_id');
     }
 }

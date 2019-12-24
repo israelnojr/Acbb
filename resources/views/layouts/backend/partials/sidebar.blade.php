@@ -10,9 +10,10 @@
                 <a class="navbar-brand" href="./"><img src="{{ asset('backend/images/logo.png')}}" alt="Logo"></a>
                 <a class="navbar-brand hidden" href="./"><img src="{{ asset('backend/images/logo2.png')}}" alt="Logo"></a>
             </div>
-
+        <div id="app"  class="main-menu collapse navbar-collapse">
+        <!-- <route-vue></route-vue> -->
+      
             @can('dashboardPermission')
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="">
                         <a href="{{route('admin.dashboard')}}"> 
@@ -30,9 +31,17 @@
                             <li><i class="fa fa-user"></i><a href="{{route('admin.zone.index')}}">Referrals</a></li>       
                         </ul>
                     </li>                  
-                </ul>
-            </div><!-- /.navbar-collapse -->
             @endcan
+                
+                <li>
+                    <a  href=""> <i class="menu-icon fa fa-"></i>
+                        <button type="button" class="btn btn-primary mb-1">
+                            Know Your Ward
+                        </button> 
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
 

@@ -14,11 +14,16 @@ class Local_government extends Model
 
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo('App\State', 'state_id');
     }
 
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function town()
+    {
+        return $this->hasMany(Town::class);
     }
 }

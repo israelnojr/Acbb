@@ -16,6 +16,7 @@ class ProfileTableSeeder extends Seeder
 
         $supserAdmin = Profile::create([
             'user_id' => 1,
+            'town_id' => 1,
             'phone' => '09051323710',
             'bio' => 'I am the super admin',
             'image' => "admin.jpg"
@@ -23,6 +24,7 @@ class ProfileTableSeeder extends Seeder
         
         $Admin = Profile::create([
             'user_id' => 2,
+            'town_id' => 2,
             'phone' => '09051323710',
             'bio' => 'i am the admin',
             'image' => "admin.jpg"
@@ -30,6 +32,7 @@ class ProfileTableSeeder extends Seeder
         
         $cordinator = Profile::create([
             'user_id' => 3,
+            'town_id' => 4,
             'phone' => '09051323710',
             'bio' => 'i am the cordinator',
             'image' => "admin.jpg"
@@ -37,6 +40,7 @@ class ProfileTableSeeder extends Seeder
 
         $user = Profile::create([
             'user_id' => 4,
+            'town_id' => 4,
             'phone' => '09051323710',
             'bio' => 'i am just a fucking user',
             'image' => "admin.jpg"
