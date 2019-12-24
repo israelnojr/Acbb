@@ -9,9 +9,9 @@
                 @include('layouts.frontend.partial.message')
                     <div class="twt-feed blue-bg">
                         <div class="corner-ribon black-ribon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa fa-circle" aria-hidden="true" style="color:#00ff00;"></i>
                         </div>
-                        <div class="fa fa-twitter wtt-mark"></div>
+                        <div class="fa fa-check fa-5x wtt-mark" style="color:#00ff00;"></div>
 
                         <div class="media">
                             <a href="#">

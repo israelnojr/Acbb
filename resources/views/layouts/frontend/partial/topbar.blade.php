@@ -1,59 +1,64 @@
- <!--==========================
-  Header
-  ============================-->
-  <header id="header" class="fixed-top">
-    <div class="container">
-
-      <div class="logo float-left">
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <h1 class="text-light"><a href="{{('/')}}"><span>{{ config('app.name') }}</span></a></h1>
-        <!-- <a href="#intro" class="scrollto"><img src="{{asset('frontend/img/logo.png')}}" alt="" class="img-fluid"></a> -->
-      </div>
-
-      <nav class="main-nav float-right d-none d-lg-block">
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="{{route('pricing')}}">Pricing</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-            @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        @can('dashboardPermission')
-                          <a class="dropdown-item" href="{{ route('home') }}">
-                            
-                              {{ __('Dashboard') }}
-                          </a>
-                        @endcan
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+ <!--============================= HEADER =============================-->
+ <div class="nav-menu">
+        <div class="bg transition">
+            <div class="container-fluid fixed">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <a class="navbar-brand" href="{{ ('/')}}">{{ config('app.name') }}</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                            data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" 
+                            aria-label="Toggle navigation">
+                              <span class="icon-menu"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                                <ul class="navbar-nav">
+                                    <!-- <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                                        aria-haspopup="true" aria-expanded="false">
+                                          Explore
+                                          <span class="icon-arrow-down"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </li> -->
+                                    @guest
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @else
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                                        aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                          <span class="icon-arrow-down"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="{{ route('user.profile.show', Auth::user()->id) }}">{{ __('Profile') }}</a>
+                                            @can('dashboardPermission')
+                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>                                           
+                                            @endcan
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                              {{ __('Logout') }}
+                                            </a>
+                                        </div>
+                                    </li>
+                                    @endguest
+                                    <li><a href="#" class="btn btn-outline-light top-btn"><span class="ti-plus"></span> {{ __('Submit Post') }}</a></li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                    
-                </li>
-            @endguest
-        </ul>
-      </nav><!-- .main-nav -->
-      
+                </div>
+            </div>
+        </div>
     </div>
-  </header><!-- #header -->
+ 
+ 

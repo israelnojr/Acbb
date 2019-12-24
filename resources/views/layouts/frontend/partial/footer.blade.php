@@ -1,55 +1,21 @@
-<!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 footer-info">
-            <h3>{{ config('app.name') }}</h3>
-            <p>Corporate & Personal Online Review Management – Let our skilled technologists define your brand with good content that best describes your business, or you personally.</p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Whatsapp:</strong> +1 209 3155 771<br>
-              <strong>Email:</strong>michael@reviewservicenow.club<br>
-            </p>
-
-            
-
-          </div>
-
-          
-
+<!--============================= FOOTER =============================-->
+<footer class="main-block dark-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright &copy; 2020 {{ config('app.name') }}. All rights reserved | This template is made with 
+                          <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> Developed By <a href="https://twitter.com/juisdev" target="_blank">Juisdev</a></p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <ul>
+                            <li><a href="#"><span class="ti-facebook"></span></a></li>
+                            <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+                            <li><a href="#"><span class="ti-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-       2019 &copy; Copyright <strong>{{ config('app.name') }}</strong>. All Rights Reserved
-      </div>
-      
-    </div>
-  </footer><!-- #footer -->
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <!-- Uncomment below i you want to use a preloader -->
-  <!-- <div id="preloader"></div> -->
+    </footer>
+    <!--//END FOOTER -->
