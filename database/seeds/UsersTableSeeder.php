@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'super-admin',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
-            'state_of_origin' => 'anambra',
+            'state_id' => 4,
             'email' => 'super@admin.com',
             'password' => Hash::make('password')
         ]); 
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'admin-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
-            'state_of_origin' => 'anambra',
+            'state_id' => 4,
             'email' => 'admin@admin.com',
             'password' => Hash::make('password')
         ]);
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'user-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
-            'state_of_origin' => 'anambra',
+            'state_id' => 4,
             'email' => 'user@user.com',
             'password' => Hash::make('password')
         ]);
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'cordinator-user',
             'sponsor_user_id' => 1,
             'local_government_id' => 73,
-            'state_of_origin' => 'anambra',
+            'state_id' => 4,
             'email' => 'cordinator@cordinator.com',
             'password' => Hash::make('password')
         ]);

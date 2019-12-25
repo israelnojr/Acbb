@@ -15,7 +15,16 @@ class CreatePostSharesTable extends Migration
     {
         Schema::create('post__shares', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('post_id')->unsigned();
+            $table->bigInteger('social_media_id')->unsigned();
+            $table->string('url');
+
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('post_id');
+            $table->index('social_media_id');
         });
     }
 

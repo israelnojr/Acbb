@@ -20957,20 +20957,6 @@ var render = function() {
           )
         ]
       )
-    ]),
-    _vm._v(" "),
-    _c("a", [
-      _c("i", { staticClass: "menu-icon fa fa-" }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary mb-1",
-          attrs: { type: "button" },
-          on: { click: _vm.openModal }
-        },
-        [_vm._v("\n            Know Your Ward\n        ")]
-      )
     ])
   ])
 }
@@ -20983,7 +20969,7 @@ var staticRenderFns = [
       _c(
         "h6",
         { staticClass: "modal-title", attrs: { id: "modal-title-default" } },
-        [_vm._v("Update Profile")]
+        [_vm._v("Get Verified")]
       ),
       _vm._v(" "),
       _c(

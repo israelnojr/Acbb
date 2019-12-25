@@ -47,5 +47,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
 });
 
 Route::namespace('User')->prefix('user')->name('user.')->group( function(){
+    Route::get('create/post', 'PostController@createPost')->name('create.post');
+    Route::post('create/post', 'PostController@store')->name('post.store');
+    Route::post('edit/post', 'PostController@update')->name('post.update');
     Route::resource('profile', 'ProfileController');
 });

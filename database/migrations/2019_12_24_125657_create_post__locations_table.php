@@ -15,7 +15,17 @@ class CreatePostLocationsTable extends Migration
     {
         Schema::create('post__locations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('post_id')->unsigned();
+            $table->bigInteger('state_id')->unsigned();
+            $table->bigInteger('local_government_id')->unsigned();
+            $table->bigInteger('town_id')->unsigned();
+            $table->boolean('status')->default(true);
             $table->timestamps();
+
+            $table->index('post_id');
+            $table->index('state_id');
+            $table->index('local_government_id');
+            $table->index('town_id');
         });
     }
 

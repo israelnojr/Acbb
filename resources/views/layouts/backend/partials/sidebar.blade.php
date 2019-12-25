@@ -1,7 +1,7 @@
 <!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
+        <nav class="navbar navbar-expand-sm navbar-default" id="app">
 
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,6 +12,7 @@
             </div>
             <div id="main-menu"  class="main-menu collapse navbar-collapse">
             <!-- <route-vue></route-vue> -->
+             <profile-form></profile-form>
             <ul class="nav navbar-nav">
                 @can('dashboardPermission')
                     <li class="">
@@ -43,8 +44,10 @@
             </div><!-- /.navbar-collapse -->
 
             <div class="navbar-header">  
-                <a class="navbar-brand  btn-" href="./">Know Your Ward</a>
-                <a class="navbar-brand hidden" href="./">K</a>
+                <a class="navbar-brand  btn-" data-toggle="modal" 
+                data-target="#updateProfile" style="cursor: pointer;">Know Your Ward</a>
+                <a class="navbar-brand hidden" 
+                data-toggle="modal" data-target="#updateProfile" style="cursor: pointer;">K</a>
             </div>
         </nav>
     </aside><!-- /#left-panel -->

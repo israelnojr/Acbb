@@ -58,7 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'sponsor_user_id' => ['required'],
-            'state_of_origin' => ['required'],
+            'state_id' => ['required'],
             'local_government_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -69,11 +69,10 @@ class RegisterController extends Controller
     {
         $email = $data['email'];
         $username = Str::slug($data['name']) . '-'. $email;
-        //  dd($username);
         $user = User::create([
             'name' => $data['name'],
             'sponsor_user_id' => $data['sponsor_user_id'],
-            'state_of_origin' => $data['state_of_origin'],
+            'state_id' => $data['state_id'],
             'username' => $username,
             'local_government_id' => $data['local_government_id'],
             'email' => $data['email'],

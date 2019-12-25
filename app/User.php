@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function hasAnyRoles($roles)
     {
         if($this->roles()->whereIn('name', $roles)->first()){
@@ -67,6 +72,7 @@ class User extends Authenticatable
         }
         return false;
     }
+
     protected static function boot()
     {
         parent::boot();
@@ -78,6 +84,7 @@ class User extends Authenticatable
             ]);
         });
     }
+    
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

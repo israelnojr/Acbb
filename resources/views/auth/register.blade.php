@@ -42,12 +42,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state_of_origin">{{ __('Sponsor') }}</label>
-                                <select class="form-control @error('state_of_origin') is-invalid @enderror" name="state_of_origin" id="">
-                                    <option value="{{ $state->name }}">{{ $state->name }}</option>
+                            <label for="state_id">{{ __('State of Origin') }}</label>
+                                <select class="form-control @error('state_id') is-invalid @enderror" name="state_id" id="">
+                                    <option value="{{ $state->id }}">{{ $state->name }}</option>
                                </select>
 
-                                @error('state_of_origin')
+                                @error('state_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

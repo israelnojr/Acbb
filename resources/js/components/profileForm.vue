@@ -7,7 +7,7 @@
                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h6 class="modal-title" id="modal-title-default">Update Profile</h6>
+                            <h6 class="modal-title" id="modal-title-default">Get Verified</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -70,12 +70,12 @@
                 </div>
             </div>
         </div>
-        <a > <i class="menu-icon fa fa-"></i>
+        <!-- <a > <i class="menu-icon fa fa-"></i>
             <button type="button" class="btn btn-primary mb-1" 
                 @click="openModal">
                 Know Your Ward
             </button> 
-        </a>
+        </a> -->
     </div>
 </template>
 
