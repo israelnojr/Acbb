@@ -31,21 +31,28 @@ class Post_CategoryTableSeeder extends Seeder
             'user_id' => 1,
             'name' => 'Food Places',
             'slug' => 'food-places',
-            'image' => 'find-place2.jpg'
+            'image' => 'find-place3.jpg'
         ]);
 
         Post_Category::create([
             'user_id' => 2,
             'name' => 'Local Places',
             'slug' => 'local-places',
-            'image' => 'local-place4.jpg'
+            'image' => 'nature.jpg'
         ]);
 
         Post_Category::create([
             'user_id' => 2,
             'name' => 'Museum Cafe',
             'slug' => 'Museum-cafe',
-            'image' => 'find-place5.jpg'
+            'image' => 'nature.jpg'
+        ]);
+
+        Post_Category::create([
+            'user_id' => 4,
+            'name' => 'Mapples Cafe',
+            'slug' => 'mapples-cafe',
+            'image' => 'nature.jpg'
         ]);
     }
 }

@@ -17,4 +17,19 @@ class Post_Location extends Model
     {
         return $this->belongsTo('App\Post', 'post_id');
     }
+
+    public function localGovernment()
+    {
+        return $this->belongsTo('App\Local_government', 'local_government_id');
+    }
+
+    public function town()
+    {
+        return $this->belongsTo('App\Town', 'town_id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo('App\State', 'state_id');
+    }
 }

@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/themify-icons.css')}}">
     <!-- Hover Effects -->
     <link rel="stylesheet" href="{{ asset('frontend/css/set1.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/swiper.min.css')}}">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="{{asset('frontend/css/magnific-popup.css')}}">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
 </head>
@@ -54,5 +57,49 @@
   <!-- Template Main Javascript File -->
   <script src="{{asset('frontend/js/main.js')}}"></script>
   <script src="{{asset('/js/message.js')}}"></script>
+
+<!-- jQuery, Bootstrap JS. -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{asset('frontend/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/popper.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <!-- Magnific popup JS -->
+  <script src="{{asset('frontend/js/jquery.magnific-popup.js')}}"></script>
+    <!-- Swipper Slider JS -->
+    <script src="{{asset('frontend/js/swiper.min.js')}}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+    <script>
+        if ($('.image-link').length) {
+            $('.image-link').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        }
+        if ($('.image-link2').length) {
+            $('.image-link2').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        }
+    </script>
 </body>
 </html>

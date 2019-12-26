@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,10 +12,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontPageController@welcome')->name('welcome');
+Route::get('show/{slug}', 'FrontPageController@show')->name('show.post');
 
 Auth::routes(['verify' => true]);
 
