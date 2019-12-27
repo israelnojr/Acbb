@@ -83,13 +83,27 @@
                     <div class="featured-place-wrap">
                         <a href="detail.html">
                             <img src="storage/{{$post->image}}" class="img-fluid" alt="#">
-                            <span class="featured-rating">{{$post->view_count}}</span>
+                            @if($post->view_count > 0 && $post->view_count < 10)
+                            <span class="featured-rating">
+                                <span class="text-center" >{{$post->view_count}}</span>
+                            </span>
+                            @endif
+
+                            @if($post->view_count > 10 && $post->view_count < 99)
+                            <span class="featured-rating bg-primary">
+                                <span class="text-center" >{{$post->view_count}}</span>
+                            </span>
+                            @elseif($post->view_count > 99)
+                            <span class="featured-rating bg-success">
+                                <span class="text-center" >99+</span>
+                            </span>
+                            @endif
                             <div class="featured-title-box">
-                               <a href=""> <h6 class="text-success">{{$post->title}}</h6></a>                             
+                               <a href=""> <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6></a>                             
                                 <p class="">
                                     <!-- <strong class="icon-user text-warning"></strong>  -->
                                     <a href="#" class="text-info" style="margin-right:3px;"> <span class="ti-user">
-                                    </span> {{ '@' .$post->user->username}}</a> 
+                                    </span> {{ str_limit('@' .$post->user->username, $limit = 12, $end = '...') }}</a> 
                                 </p>                           
                                 <span>• </span> <p class="text-danger">Likes: 3</p> <span> • </span>
                                 <p><span>Share: </span> 32</p>

@@ -21,6 +21,12 @@ class CreateProfilesTable extends Migration
             $table->string('image')->nullable();
             $table->text('address')->nullable();
             $table->text('bio')->nullable();
+
+            //foreign keyss
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
+
+
             $table->timestamps();
 
             $table->index('user_id');

@@ -25,6 +25,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('status')->default(true);
             $table->rememberToken();
+
+            //foreign keyss
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('local_government_id')->references('id')->on('local_governments')->onDelete('cascade');
+
+
             $table->timestamps();
 
             $table->index('local_government_id');

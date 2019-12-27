@@ -18,6 +18,11 @@ class CreateTownsTable extends Migration
             $table->bigInteger('state_id')->unsigned();
             $table->bigInteger('local_government_id')->unsigned();
             $table->string('name');
+
+            //foreign keyss
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('local_government_id')->references('id')->on('local_governments')->onDelete('cascade');
+
             $table->timestamps();
 
             $table->index('state_id');

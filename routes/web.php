@@ -37,6 +37,7 @@ Auth::routes(['verify' => true]);
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
     Route::post('local-post', 'UsersController@localGov')->name('local');
     Route::post('state-post', 'UsersController@States')->name('states');
+    Route::patch('status/update/{id}', 'UsersController@status')->name('status');
 
     Route::get('dashboard', 'UsersController@dashboard')->name('dashboard');
     

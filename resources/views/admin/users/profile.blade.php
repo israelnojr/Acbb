@@ -9,7 +9,7 @@
                 @include('layouts.frontend.partial.message')
                     <div class="twt-feed blue-bg">
                         <div class="corner-ribon black-ribon">
-                        @if($profile->user->isOnline() == false)
+                        @if($profile->user->isOnline())
                             <i class="fa fa-circle" aria-hidden="true" style="color:#00ff00;"></i>
                             @else
                             <i class="fa fa-circle" aria-hidden="true" style="color: pink;"></i>

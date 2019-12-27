@@ -10,8 +10,9 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <ul>
                             <li><a href="#"><span class="ti-facebook"></span></a></li>
-                            <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
-                            <li><a href="#"><span class="ti-instagram"></span></a></li>
+                            <li><a href="https://twitter.com/acbbwithgce?s=09"><span class="ti-twitter-alt"></span></a></li>
+                            <li><a href="https://www.instagram.com/acbbwithezemo/"><span class="ti-instagram"></span></a></li>
+                            <li><a href="#"><span class="ti-youtube"></span></a></li>
                         </ul>
                     </div>
                 </div>

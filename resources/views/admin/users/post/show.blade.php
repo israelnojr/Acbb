@@ -5,37 +5,18 @@
         <!-- Swiper -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-
+            @foreach($postCategory as $post)
                 <div class="swiper-slide">
-                    <a href="images/reserve-slide2.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide2.jpg')}}" class="img-fluid" alt="#">
-                    </a>
+                    <a href="">
+                    <figure class="effect-ruby">
+                        <img src="{{asset('frontend/images/reserve-slide2.jpg')}}" class="img-fluid" alt="img13" />
+                        <figcaption>
+                          <h6>{{ str_limit($post->title, $limit = 35, $end = '...') }}</h6>
+                        </figcaption>
+                    </figure> 
+                    </a>                  
                 </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide1.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide1.jpg')}}" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide3.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide3.jpg')}}" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide1.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide1.jpg')}}" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide2.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide2.jpg')}}" class="img-fluid" alt="#">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="images/reserve-slide3.jpg" class="grid image-link">
-                        <img src="{{asset('frontend/images/reserve-slide3.jpg')}}" class="img-fluid" alt="#">
-                    </a>
-                </div>
+            @endforeach
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination swiper-pagination-white"></div>

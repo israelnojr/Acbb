@@ -69,8 +69,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-                       
+                        </div>                     
                         <div class="form-group">
                             <div class="col-md-8" style="margin-top:15px !important;">
                                 <button type="submit" class="btn btn-primary mr-2">Post</button>

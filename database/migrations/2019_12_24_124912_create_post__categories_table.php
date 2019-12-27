@@ -21,6 +21,9 @@ class CreatePostCategoriesTable extends Migration
             $table->string('image');
             $table->boolean('status')->default(true);
 
+            //foreign keyss
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
 
             $table->index('user_id');

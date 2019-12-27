@@ -20,6 +20,11 @@ class CreatePostSharesTable extends Migration
             $table->bigInteger('social_media_id')->unsigned();
             $table->string('url');
 
+            //foreign keyss
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('social_media_id')->references('id')->on('social_media')->onDelete('cascade');
+
             $table->timestamps();
 
             $table->index('user_id');

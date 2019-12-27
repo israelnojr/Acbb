@@ -101,4 +101,21 @@ class UsersController extends Controller
         return view('admin.dashboard');
     }
 
+    public function status(User $user, $id)
+    {
+       $user = User::find($id);
+        if($user->status == true){
+            $user->update(['status' => false]);
+            $user->save();
+            return redirect()->back()->with('success', 'You\'ve Succesfffully Updated user Status');
+        }
+        else
+        {
+            $user->status = false;
+            $user->update(['status' => true]);
+            $user->save();
+            return redirect()->back()->with('success', 'You\'ve Succesfffully Updated user Status');
+        }
+    }
+
 }

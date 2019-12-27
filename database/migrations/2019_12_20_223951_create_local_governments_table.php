@@ -17,6 +17,10 @@ class CreateLocalGovernmentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('state_id')->unsigned();
             $table->string('name');
+
+            //foreign keyss
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            
             $table->timestamps();
 
             $table->index('state_id');

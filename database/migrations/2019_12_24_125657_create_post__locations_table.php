@@ -20,6 +20,13 @@ class CreatePostLocationsTable extends Migration
             $table->bigInteger('local_government_id')->unsigned();
             $table->bigInteger('town_id')->unsigned();
             $table->boolean('status')->default(true);
+
+            //foreign keyss
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('local_government_id')->references('id')->on('local_governments')->onDelete('cascade');
+            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
+
             $table->timestamps();
 
             $table->index('post_id');

@@ -33,7 +33,10 @@
                                         <!-- <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td> -->
                                         <td>{{ $user->localGovern->name}}</td>
                                         <td> 
-                                            <a href="" class=" btn {{ $user->status == true ? 'btn-primary' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}} </a>
+                                            <form action="{{route('admin.status', $user->id )}}" method="post">
+                                                @csrf  @method('patch')
+                                                <button type="submit" class="btn {{$user->status == true ? 'btn-success' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}}</button>
+                                            </form>
                                         </td>
                                         <td class="d-flex justify-content-space-between"> 
                                             @can('edit-user')
@@ -49,9 +52,9 @@
                                         </td>
                                         <td>
                                             @if($user->isOnline())
-                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-success">Yes</a>
+                                            <a href="#" class="btn btn-success">Yes</a>
                                             @else
-                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-danger">No</a>
+                                            <a href="#" class="btn btn-danger">No</a>
                                             @endif
                                         </td>
                                     </tr>

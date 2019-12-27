@@ -20,6 +20,10 @@ class CreatePostCommentsTable extends Migration
             $table->text('comment');
             $table->boolean('status')->default(true);
 
+            //foreign keyss
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+
             $table->timestamps();
 
             $table->index('user_id');

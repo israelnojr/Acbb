@@ -7,6 +7,7 @@ use App\Post_Category;
 use App\Post_Location;
 use App\Local_government;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class FrontPageController extends Controller
 {
@@ -21,6 +22,13 @@ class FrontPageController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        return view('admin.users.post.show', compact('post'));
+        $postKey = 'post'.$post->id;
+        if(!Session::has($postKey)){
+            $post->increment('view_count');
+            Session::put($postKey);
+        }
+        $postCategory = Post::where('post_category_id', $post->post_category_id)->get();
+        // dd($postCategory );
+        return view('admin.users.post.show', compact('post','postCategory'));
     }
 }

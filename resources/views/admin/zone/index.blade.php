@@ -20,6 +20,7 @@
                                             <th scope="col">Local Gov</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">Online</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -29,7 +30,10 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{ $user->localGovern->name}}</td>
                                             <td> 
-                                                <a href="" class=" btn {{ $user->status == true ? 'btn-primary' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}} </a>
+                                            <form action="{{route('admin.status', $user->id )}}" method="post">
+                                                @csrf  @method('patch')
+                                                <button type="submit" class="btn {{$user->status == true ? 'btn-success' : 'btn-danger'}}">{{$user->status == true ? 'Active' : 'Inactive'}}</button>
+                                            </form>
                                             </td>
                                             <td class="d-flex justify-content-space-between">
                                             @can('edit-user')
@@ -42,6 +46,13 @@
                                             </form>
                                             @endcan 
                                              <a href="{{ route('user.profile.show', $user->id)}}" class="btn btn-success">Show</a>
+                                            </td>
+                                            <td>
+                                                @if($user->isOnline())
+                                                <a href="#" class="btn btn-success">Yes</a>
+                                                @else
+                                                <a href="#" class="btn btn-danger">No</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

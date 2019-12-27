@@ -22,6 +22,10 @@ class CreateContactsTable extends Migration
             $table->boolean('status')->default(false);
             $table->boolean('completed')->default(false);
             $table->text('message');
+
+            //foreign keyss
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
 
             $table->index('user_id');
