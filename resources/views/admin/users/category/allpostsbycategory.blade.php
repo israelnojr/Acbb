@@ -8,8 +8,7 @@
         min-height: 800px; 
     }
 </style>
-    <!-- SLIDER -->
-    <section class="slider d-flex align-items-center">
+<section class="slider d-flex align-items-center">
     <!-- <img src="{{asset('hero/hero_acbb.jpg')}}" class="img-fluid" alt="#"> -->
         <div class="container">
             <div class="row d-flex justify-content-center">
@@ -44,37 +43,6 @@
         </div>
     </section>
     <!--// SLIDER -->
-    <!--//END HEADER -->
-    <!--============================= FIND PLACES =============================-->
-    <section class="main-block">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="styled-heading">
-                        <h3>Explore Posts by Categeries</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-            @foreach($categories as $category)
-            <div class="col-md-4">
-                <div class="find-place-img_wrap">
-                    <div class="grid">
-                        <a href="{{route('postsbycategory', $category->slug)}}"><figure class="effect-ruby">
-                            <img src="{{asset('frontend/images/'.$category->image)}}" class="img-fluid" alt="img13" />
-                            <figcaption>
-                                <h5>{{$category->name}} </h5>
-                                <p>385 Posts</p>
-                            </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </section>
-    <!--//END FIND PLACES -->
     <!--============================= FEATURED PLACES =============================-->
     <section class="main-block light-bg">
         <div class="container">
@@ -89,8 +57,8 @@
                 @foreach($posts as $post)
                 <div class="col-md-4 featured-responsive" style="margin-bottom:20px;">
                     <div class="featured-place-wrap">
-                        <a href="detail.html">
-                            <img src="storage/{{$post->image}}" class="img-fluid" alt="#">
+                        <a href="#">
+                            <img src="/storage/{{$post->image}}" class="img-fluid" alt="#">
                             @if($post->view_count > 0 && $post->view_count < 10)
                             <span class="featured-rating">
                                 <span class="text-center" >{{$post->view_count}}</span>
@@ -131,58 +99,5 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="featured-btn-wrap">
-                        <a href="{{route('allposts')}}" class="btn btn-danger">VIEW ALL</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
-    <!--//END FEATURED PLACES -->
-    <!--============================= CATEGORIES =============================-->
-    <section class="main-block">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="styled-heading">
-                        <h3>Explore Post By Locations</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-            @foreach($locations as $location)
-                <div class="col-md-3 category-responsive">
-                    <a href="#" class="category-wrap">
-                        <div class="category-block">
-                            <h6>{{$location->name}}</h6>
-                        </div>
-                    </a>
-                </div>
-            @endforeach 
-        </div>
-    </section>
-    <!--//END CATEGORIES -->
-    <!--============================= ADD LISTING =============================-->
-    <section class="main-block light-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="add-listing-wrap">
-                        <h2>Reach millions of People</h2>
-                        <p>Let others hear your thoughts about our motherLand</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="featured-btn-wrap">
-                        <a href="#" class="btn btn-danger"><span class="ti-plus"></span> ADD POST</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--//END ADD LISTING -->
 @endsection

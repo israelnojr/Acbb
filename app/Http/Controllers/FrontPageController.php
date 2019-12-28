@@ -20,6 +20,19 @@ class FrontPageController extends Controller
         return view('welcome', compact('posts', 'categories', 'locations'));
     }
 
+    public function PostByCategory($slug)
+    {
+        $category = Post_Category::where('slug', $slug)->first();
+        $posts = Post::where('post_category_id', $category->id)->inRandomOrder()->get();
+        return view('admin.users.category.allpostsbycategory', compact('posts'));
+    }
+
+    public function allPosts()
+    {
+        $posts = Post::where('status', false)->inRandomOrder()->get();
+        return view('admin.users.post.allposts', compact('posts'));
+    }
+
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();

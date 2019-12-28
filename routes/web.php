@@ -14,6 +14,8 @@ use App\Post;
 */
 Route::get('/', 'FrontPageController@welcome')->name('welcome');
 Route::get('show/{slug}', 'FrontPageController@show')->name('show.post');
+Route::get('post-by-category/{slug}', 'FrontPageController@PostByCategory')->name('postsbycategory');
+Route::get('all-posts/', 'FrontPageController@allPosts')->name('allposts');
 
 Auth::routes(['verify' => true]);
 
