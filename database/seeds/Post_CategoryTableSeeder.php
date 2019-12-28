@@ -18,6 +18,7 @@ class Post_CategoryTableSeeder extends Seeder
             'name' => 'Nature Places',
             'slug' => 'nature-places',
             'image' => 'nature.jpg'
+            'view_count' => 1
         ]);
 
         Post_Category::create([
@@ -39,6 +40,7 @@ class Post_CategoryTableSeeder extends Seeder
             'name' => 'Local Places',
             'slug' => 'local-places',
             'image' => 'nature.jpg'
+            'view_count' => 1
         ]);
 
         Post_Category::create([
@@ -46,6 +48,7 @@ class Post_CategoryTableSeeder extends Seeder
             'name' => 'Museum Cafe',
             'slug' => 'Museum-cafe',
             'image' => 'nature.jpg'
+            'view_count' => 1
         ]);
 
         Post_Category::create([
@@ -53,6 +56,7 @@ class Post_CategoryTableSeeder extends Seeder
             'name' => 'Mapples Cafe',
             'slug' => 'mapples-cafe',
             'image' => 'nature.jpg'
+            'view_count' => 1
         ]);
     }
 }
