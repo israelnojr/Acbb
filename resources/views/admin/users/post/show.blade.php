@@ -7,9 +7,9 @@
             <div class="swiper-wrapper">
             @foreach($postCategory as $post)
                 <div class="swiper-slide">
-                    <a href="">
+                    <a href="{{route('show.post', $post->slug)}}">
                     <figure class="effect-ruby">
-                        <img src="{{asset('frontend/images/reserve-slide2.jpg')}}" class="img-fluid" alt="img13" />
+                        <img src="/storage/{{$post->image}}" class="img-fluid" alt="img13" />
                         <figcaption>
                           <h6>{{ str_limit($post->title, $limit = 35, $end = '...') }}</h6>
                         </figcaption>
@@ -31,8 +31,6 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5>{{$post->title}}</h5>
-                    <!-- <p><span>$$$</span>$$</p>
-                    <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p> -->
                 </div>
                 <div class="col-md-6">
                     <div class="reserve-seat-block">
@@ -43,11 +41,6 @@
                             <a href="#" class="btn btn-outline-danger">Leave a Comment</a>
                             <span>34 Comments</span>
                         </div>
-                        <!-- <div class="reserve-btn">
-                            <div class="featured-btn-wrap">
-                                <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -58,15 +51,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 responsive-wrap">
+                    <div class="col-md-12 text-center">
+                        <img src="/storage/{{ $post->image}}" class="img-fluid" alt="#">
+                    </div>
                     <div class="booking-checkbox_wrap">
                         <div class="booking-checkbox">
                             <p>{{$post->content}}</p>
                             <hr>
                             <br>
+                            @foreach($photos as $photo)
                             <div class="col-md-12 text-center">
-                                <img src="{{asset('frontend/images/featured2.jpg')}}" class="img-fluid" alt="#">
+                                <img src="/storage/{{ $photo->filename}}" class="img-fluid" alt="#">
                             </div>
                             <br>
+                            @endforeach
                             <hr>
                         </div>
                     <div class="booking-checkbox_wrap mt-4">

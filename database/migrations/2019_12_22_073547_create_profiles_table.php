@@ -23,8 +23,8 @@ class CreateProfilesTable extends Migration
             $table->text('bio')->nullable();
 
             //foreign keyss
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
-            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
+            // $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            // $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
 
 
             $table->timestamps();

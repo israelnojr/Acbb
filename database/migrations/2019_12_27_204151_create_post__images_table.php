@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostCommentsTable extends Migration
+class CreatePostImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,12 @@ class CreatePostCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post__comments', function (Blueprint $table) {
+        Schema::create('post__images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('post_id')->unsigned();
-            $table->text('comment');
-            $table->boolean('status')->default(true);
-
-            //foreign keyss
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             // $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-
+            $table->string('filename');
             $table->timestamps();
-
-            $table->index('user_id');
-            $table->index('post_id');
         });
     }
 
@@ -38,6 +29,6 @@ class CreatePostCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post__comments');
+        Schema::dropIfExists('post__images');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Post_Images;
 use App\Post_Category;
 use App\Post_Location;
 use App\Local_government;
@@ -27,8 +28,8 @@ class FrontPageController extends Controller
             $post->increment('view_count');
             Session::put($postKey);
         }
+        $photos = Post_Images::where('post_id', $post->id)->get();
         $postCategory = Post::where('post_category_id', $post->post_category_id)->get();
-        // dd($postCategory );
-        return view('admin.users.post.show', compact('post','postCategory'));
+        return view('admin.users.post.show', compact('post','postCategory','photos'));
     }
 }

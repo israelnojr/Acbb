@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image" class="col-md-8 col-form-label text-md-left">{{ __('Image') }}</label>
+                            <label for="image" class="col-md-8 col-form-label text-md-left">{{ __('Featured Image') }}</label>
 
                             <div class="col-md-12">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" 
@@ -64,6 +64,18 @@
                             <div class="col-md-12">
                                 <textarea type="text" name="content" rows="6" class="form-control">{{ old('content') }}</textarea>
                                 @error('content')
+                                    <span class="invalid-feedback alert alert-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="photos" class="col-md-8 col-form-label text-md-left">{{ __('Select Multiple images') }}</label>
+                            <div class="col-md-12">
+                            <input type="file" class="form-control" value="{{ old('photos') }}" name="photos[]" multiple /> 
+                                @error('photos')
                                     <span class="invalid-feedback alert alert-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

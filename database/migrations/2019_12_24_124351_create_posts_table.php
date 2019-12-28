@@ -25,8 +25,8 @@ class CreatePostsTable extends Migration
             $table->boolean('status')->default(false);
 
             //foreign keyss
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('post_category_id')->references('id')->on('local_governments')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('post_category_id')->references('id')->on('local_governments')->onDelete('cascade');
 
             $table->timestamps();
 

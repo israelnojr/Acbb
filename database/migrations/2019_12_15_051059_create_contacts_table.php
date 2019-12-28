@@ -24,7 +24,7 @@ class CreateContactsTable extends Migration
             $table->text('message');
 
             //foreign keyss
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
 
