@@ -23,6 +23,11 @@ class Post extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Post_Category', 'post_category_id');
+    }
+
     public function location()
     {
         return $this->hasMany(Post_Location::class);
