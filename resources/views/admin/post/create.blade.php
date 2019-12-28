@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
             @include('layouts.frontend.partial.message')
-                <div class="card-header">Update Profile</div>
+                <div class="card-header">Create Post</div>
                 <div class="card-body">
                    <form action="{{route('user.post.store')}}" 
                         method="post" enctype='multipart/form-data'> 

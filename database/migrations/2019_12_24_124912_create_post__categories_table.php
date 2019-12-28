@@ -16,10 +16,11 @@ class CreatePostCategoriesTable extends Migration
         Schema::create('post__categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
+            $table->integer('view_count');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image');
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
 
             //foreign keyss
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

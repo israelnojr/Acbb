@@ -8,7 +8,7 @@
             @foreach($postCategory as $post)
                 <div class="swiper-slide">
                     <a href="{{route('show.post', $post->slug)}}">
-                    <figure class="effect-ruby">
+                    <figure class="effect-ruby" style="background:transparent">
                         <img src="/storage/{{$post->image}}" class="img-fluid" alt="img13" />
                         <figcaption>
                           <h6>{{ str_limit($post->title, $limit = 35, $end = '...') }}</h6>

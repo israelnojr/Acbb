@@ -34,7 +34,21 @@
                         <li><i class="fa fa-cog"></i><a href="{{ route('user.profile.edit', Auth::user()->profile->id) }}">Update Info</a></li> 
                         <li><i class="fa fa-users"></i><a href="{{route('admin.zone.index')}}">Referrals</a></li>       
                     </ul>
-                </li> 
+                </li>
+
+                <li class="menu-item-has-children dropdown active">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                    <i class="menu-icon fa fa-list-alt"></i>Manage Categories</a>
+                    <ul class="sub-menu children dropdown-menu">
+                    <li><i class="fa fa-list-alt"></i><a href="{{route('admin.create.category')}}">Create Category</a></li>
+                        @can('edit-user')
+                        <li><i class="fa fa-list-alt"></i><a href="{{route('admin.index.category')}}">All Categories</a></li>
+                        @endcan
+                        @can('dashboardPermission')
+                        <li><i class="fa fa-list-alt"></i><a href="{{route('admin.mycategory.category')}}">My Categories</a></li>
+                        @endcan
+                    </ul>
+                </li>  
                     
                 <li class="">
                     <a href=""> 

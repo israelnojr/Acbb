@@ -45,6 +45,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
     Route::get('users/admin-users', 'UsersController@adminUsers')->name('admins');
     Route::resource('users/zone', 'ZoneController', ['except' => ['show', 'create', 'store']]);
     Route::get('zone/managers', 'ZoneController@zonerManagers')->name('managers');
+
+    Route::get('create/category', 'CategoryController@create')->name('create.category');
+    Route::get('category', 'CategoryController@index')->name('index.category');
+    Route::get('user/category', 'CategoryController@myCategory')->name('mycategory.category');
+    Route::post('create/category', 'CategoryController@store')->name('store.category');
+
+    Route::patch('update/status/{id}', 'CategoryController@status')->name('status.category');
 });
 
 Route::namespace('User')->prefix('user')->name('user.')->group( function(){
