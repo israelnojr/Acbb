@@ -38,8 +38,8 @@
                             <span>{{$post->view_count}}</span>
                         </div>
                         <div class="review-btn">
-                            <a href="#" class="btn btn-outline-danger">Leave a Comment</a>
-                            <span>34 Comments</span>
+                            <a href="{{route('user.create.comment', $post->id)}}" class="btn btn-outline-danger">Leave a Comment</a>
+                            <span>{{$commentCount}} Comments</span>
                         </div>
                     </div>
                 </div>
@@ -68,29 +68,29 @@
                             <hr>
                         </div>
                     <div class="booking-checkbox_wrap mt-4">
-                        <h5>34 Comments</h5>
-                        <hr>
+                        <h5>{{$commentCount}} Comments</h5>
+                        <hr> 
+                        @foreach($comments as $comment)
                         <div class="customer-review_wrap">
-                            <div class="customer-img">
-                                <img src="{{asset('frontend/images/customer-img1.jpg')}}" class="img-fluid" alt="#">
-                                <p>Amanda G</p>
-                                <span>35 Comments</span>
-                            </div>
-                            <div class="customer-content-wrap">
-                                <div class="customer-content">
-                                    <div class="-review">
-                                       <h6>A hole-in-the-wall old school shop.</h6>
-                                    </div>
-                                    <div class="customer"></div>
+                                <div class="customer-img mr-3">
+                                    <img src="{{ $comment->user->profile->profileImage()}}" class="img-fluid" alt="#">
+                                    <p>{{$comment->user->name}}</p>
+                                    <span>{{$commentUserCount}} Comments</span>
                                 </div>
-                                <p class="customer-text">I love the noodles here but it is so rare that I get to come here. Tasty Hand-Pulled Noodles is the best type of whole in the wall restaurant. The staff are really nice, and you should be seated quickly. I usually get the
-                                    hand pulled noodles in a soup. House Special #1 is amazing and the lamb noodles are also great. If you want your noodles a little chewier, get the knife cut noodles, which are also amazing. Their dumplings are great
-                                    dipped in their chili sauce.
-                                </p>
-                            </div>
+                                <div class="customer-content-wrap">
+                                    <div class="customer-content">
+                                        <div class="-review">
+                                        <h6></h6>
+                                        </div>
+                                        <div class="customer"></div>
+                                    </div>
+                                    <p class="customer-text">
+                                        {{$comment->comment}}
+                                    </p>
+                                </div>
                         </div>
                         <hr>
-                      
+                        @endforeach
                     </div>
                 </div>
                

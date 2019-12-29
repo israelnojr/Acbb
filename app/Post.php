@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Post_Comment;
 use App\Post_Location;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,6 +32,11 @@ class Post extends Model
     public function location()
     {
         return $this->belongsTo(Post_Location::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Post_Comment::class, 'post_id');
     }
 
     protected static function boot()

@@ -62,5 +62,9 @@ Route::namespace('User')->prefix('user')->name('user.')->group( function(){
     Route::post('edit/post', 'PostController@update')->name('post.update');
     Route::get('posts', 'PostController@index')->name('post.index');
     Route::patch('posts-status/{id}', 'PostController@status')->name('post.status');
+
+    Route::get('post/comment/{id}', 'CommentController@create')->name('create.comment');
+    Route::post('post/comment/{id}', 'CommentController@store')->name('store.comment');
+
     Route::resource('profile', 'ProfileController');
 });

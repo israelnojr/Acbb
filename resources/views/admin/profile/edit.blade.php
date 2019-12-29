@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+            @include('layouts.frontend.partial.message')
                 <div class="card-header">Update Profile</div>
                 <div class="card-body">
                    <form action="{{route('user.profile.update', $profile->id)}}" 
@@ -85,7 +86,7 @@
                         <label for="town_id" class="col-md-8 col-form-label text-md-left">{{ __('Town') }}</label>
                             <div class="col-md-12">
                                 <select type="text"  name="town_id"  class="form-control">
-                                    <option value="">Choose your Town</option>
+                                    <!-- <option value="">Choose your Town</option> -->
                                     @foreach($town as $tw)
                                         <option value="{{$tw->id}}">{{$tw->name}}</option>v
                                     @endforeach

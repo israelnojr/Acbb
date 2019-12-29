@@ -21,8 +21,8 @@ class Post_Category extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    // public function posts()
-    // {
-    //     $this->hasMany(Post::class, 'id', 'post_category_id');
-    // }
+    public function posts()
+    {
+        $this->hasMany(Post::class, 'id', 'post_category_id');
+    }
 }

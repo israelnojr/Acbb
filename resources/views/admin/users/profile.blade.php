@@ -20,7 +20,7 @@
                         <div class="media">
                             <a href="#">
                                 <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" 
-                                alt="" src="{{asset('backend/images/'.$profile->image)}}">
+                                alt="" src="{{$profile->profileImage()}}">
                             </a>
                             <div class="media-body">
                                 <h2 class="text-white display-6">{{ $profile->user->name }}</h2>

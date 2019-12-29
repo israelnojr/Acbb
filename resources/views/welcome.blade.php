@@ -3,13 +3,29 @@
 @section('content')
 <style>
     .slider {
-        background: url(/hero/hero_acbb_1.jpg) no-repeat;
+        background: url(/hero/hero_acbb4.jpg) no-repeat;
         background-size: cover;
         min-height: 800px; 
     }
+
+    #overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer; /* Add a pointer on hover */
+    }
+
 </style>
     <!-- SLIDER -->
     <section class="slider d-flex align-items-center">
+    <div id="overlay"></div>
     <!-- <img src="{{asset('hero/hero_acbb.jpg')}}" class="img-fluid" alt="#"> -->
         <div class="container">
             <div class="row d-flex justify-content-center">
@@ -18,8 +34,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="slider-content_wrap">
-                                    <h1>Discover great places in Anambra </h1>
-                                    <h5 class="text-warning">Join millions of people <strong class="text-danger">EXPLORE</strong> the beautiful nature in <strong class="text-white">ANAMBRA</strong></h5>
+                                    <h1 style="color: #3eff15">Discover great places in Anambra </h1>
+                                    <h5 class="text-warning" style="font-weight: 900; color: yellow;">Join millions of people 
+                                        <strong class="text-" style="font-weight: 900; color: red;">EXPLORE</strong> the beautiful nature in <strong class="text-white">ANAMBRA</strong></h5>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +51,7 @@
                                     </div>
                                 </form>
                                 <div class="slider-link">
-                                    <a href="#" class="text-danger">Browse Popular</a><span>or</span> <a href="#" class="text-warning">Recently Addred</a>
+                                    <a href="#" class="text-danger">Browse Popular</a><span>or</span> <a href="#" class="text-warning">Recently Added</a>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +68,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="styled-heading">
-                        <h3>Explore Posts by Categeries</h3>
+                        <h3>Explore Posts by Categories</h3>
                     </div>
                 </div>
             </div>
@@ -185,4 +202,13 @@
         </div>
     </section>
     <!--//END ADD LISTING -->
+    <script>
+        function on() {
+        document.getElementById("overlay").style.display = "block";
+        }
+
+        function off() {
+        document.getElementById("overlay").style.display = "none";
+        }
+    </script>
 @endsection

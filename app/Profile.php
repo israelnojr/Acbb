@@ -27,4 +27,10 @@ class Profile extends Model
         return $this->belongsTo('App\Town', 'town_id');
     }
 
+    public function profileImage()
+    {
+        $imagePath = ($this->image) ? $this->image : 'profile/admin.jpg';
+        return '/storage/'. $imagePath;
+    }
+
 }

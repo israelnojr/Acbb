@@ -84,7 +84,7 @@
     <div class="col-sm-5">
         <div class="user-area dropdown float-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="user-avatar rounded-circle" src="{{ asset('backend/images/'.Auth::user()->profile->image)}}" alt="{{ Auth::user()->username }}">
+                <img class="user-avatar rounded-circle" src="{{ Auth::user()->profile->profileImage() }}" alt="{{ Auth::user()->username }}">
             </a>
 
             <div class="user-menu dropdown-menu">

@@ -3,10 +3,11 @@
 namespace App;
 
 use Auth;
+use Cache;
 use App\Role;
 use App\Profile;
+use App\Post_Comment;
 use App\Local_government;
-use Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -19,7 +20,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'password', 'state_of_origin', 'sponsor_user_id', 
-        'local_government_id','username','status'
+        'local_government_id','username','status', 'state_id'
     ];
   
     protected $hidden = [
@@ -51,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Post_Comment::class, 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -80,7 +86,6 @@ class User extends Authenticatable
             $user->profile()->create([
                 'user_id' => $user->id,
                 'bio' => "I'm ". $user->name,
-                'image' => "admin.jpg"
             ]);
         });
     }

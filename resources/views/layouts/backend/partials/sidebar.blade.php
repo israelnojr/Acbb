@@ -52,14 +52,14 @@
 
                 <li class="menu-item-has-children dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                    <i class="menu-icon fa fa-post"></i>Manage Posts</a>
+                    <i class="menu-icon fa fa-adjust"></i>Manage Posts</a>
                     <ul class="sub-menu children dropdown-menu">
                     <li><i class="fa fa-list-alt"></i><a href="{{route('user.create.post')}}">Create Post</a></li>
                         @can('edit-user')
-                        <li><i class="fa fa-post"></i><a href="{{route('user.post.index')}}">All Posts</a></li>
+                        <li><i class="fa fa-adjust"></i><a href="{{route('user.post.index')}}">All Posts</a></li>
                         @endcan
                         @can('dashboardPermission')
-                        <li><i class="fa fa-list-alt"></i><a href="{{route('admin.mycategory.category')}}">My Posts</a></li>
+                        <li><i class="fa fa-adjust"></i><a href="{{route('admin.mycategory.category')}}">My Posts</a></li>
                         @endcan
                     </ul>
                 </li>    
