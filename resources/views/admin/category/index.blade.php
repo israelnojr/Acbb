@@ -29,7 +29,7 @@
                                         <td> 
                                             <form action="{{route('admin.status.category', $category->id )}}" method="post">
                                                 @csrf  @method('patch')
-                                                <button type="submit" class="btn {{$category->status == false ? 'btn-success' : 'btn-danger'}}">{{$category->status == true ? 'Active' : 'Inactive'}}</button>
+                                                <button type="submit" class="btn {{$category->status == false ? 'btn-danger' : 'btn-primary'}}">{{$category->status == true ? 'Active' : 'Inactive'}}</button>
                                             </form>
                                         </td>
                                         <td class="d-flex justify-content-space-between"> 
@@ -42,7 +42,7 @@
                                                 <button type="submit" class="btn btn-danger ml-1 mr-1">Delete</button>
                                             </form>
                                             @endcan
-                                            <a href="" class="btn btn-success">Show</a>
+                                            <a href="{{route('postsbycategory', $category->slug)}}" class="btn btn-success">Show</a>
                                         </td>
                                     </tr>
                                 @endforeach

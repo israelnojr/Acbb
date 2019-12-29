@@ -9,27 +9,27 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">My categories</strong>
+                            <strong class="card-title">List of all Categories</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                 <thead class="thead-dark">  
                                     <tr>
-                                        <th scope="col">Name</th>
+                                        <th scope="col">Title</th>
                                         <th scope="col">Creator</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $category)
+                                @foreach($posts as $post)
                                     <tr>
-                                        <td>{{$category->name}}</td>
-                                        <td>{{$category->user->name}}</td>  
+                                        <td>{{$post->title}}</td>
+                                        <td>{{$post->user->name}}</td>  
                                         <td> 
-                                            <form action="{{route('admin.status.category', $category->id )}}" method="post">
+                                            <form action="{{route('user.post.status', $post->id )}}" method="post">
                                                 @csrf  @method('patch')
-                                                <button type="submit" class="btn {{$category->status == false ? 'btn-danger' : 'btn-primary'}}">{{$category->status == true ? 'Active' : 'Inactive'}}</button>
+                                                <button type="submit" class="btn {{$post->status == false ? 'btn-danger' : 'btn-primary'}}">{{$post->status == true ? 'Active' : 'Inactive'}}</button>
                                             </form>
                                         </td>
                                         <td class="d-flex justify-content-space-between"> 
@@ -42,7 +42,7 @@
                                                 <button type="submit" class="btn btn-danger ml-1 mr-1">Delete</button>
                                             </form>
                                             @endcan
-                                            <a href="{{route('postsbycategory', $category->slug)}}" class="btn btn-success">Show</a>
+                                            <a href="{{route('show.post', $post->slug)}}" class="btn btn-success">Show</a>
                                         </td>
                                     </tr>
                                 @endforeach

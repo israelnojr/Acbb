@@ -15,7 +15,7 @@ class FrontPageController extends Controller
     public function welcome()
     {
         $categories = Post_Category::where('status', true)->inRandomOrder()->limit(4)->get();
-        $posts = Post::where('status', false)->inRandomOrder()->limit(6)->get();
+        $posts = Post::where('status', true)->inRandomOrder()->limit(6)->get();
         $locations = Local_government::where('state_id', 4)->inRandomOrder()->limit(8)->get();
         return view('welcome', compact('posts', 'categories', 'locations'));
     }
@@ -29,7 +29,7 @@ class FrontPageController extends Controller
 
     public function allPosts()
     {
-        $posts = Post::where('status', false)->inRandomOrder()->get();
+        $posts = Post::where('status', true)->inRandomOrder()->get();
         return view('admin.users.post.allposts', compact('posts'));
     }
 

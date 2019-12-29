@@ -61,10 +61,10 @@
                 <div class="find-place-img_wrap">
                     <div class="grid">
                         <a href="{{route('postsbycategory', $category->slug)}}"><figure class="effect-ruby">
-                            <img src="{{asset('frontend/images/'.$category->image)}}" class="img-fluid" alt="img13" />
+                            <img src="/storage/{{$category->image}}" class="img-fluid" alt="img13" />
                             <figcaption>
                                 <h5>{{$category->name}} </h5>
-                                <p>385 Posts</p>
+                                <p>{{$category->count()}} Posts</p>
                             </figcaption>
                             </figure>
                         </a>
@@ -178,7 +178,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="featured-btn-wrap">
-                        <a href="#" class="btn btn-danger"><span class="ti-plus"></span> ADD POST</a>
+                        <a href="{{route('user.create.post')}}" class="btn btn-danger"><span class="ti-plus"></span> ADD POST</a>
                     </div>
                 </div>
             </div>

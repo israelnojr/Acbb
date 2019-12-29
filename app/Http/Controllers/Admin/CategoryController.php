@@ -7,10 +7,16 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         if(Auth::user()->status == true){
@@ -37,11 +43,13 @@ class CategoryController extends Controller
   
     public function store(Request $request)
     {
+        // dd($request->all());
         if(Auth::user()->status == true){
             $category = [
                 'name' => ['required', 'max:100'],
                 'image' =>['required', 'image', 'max:1999'],
             ];
+
             $request->validate( $category);
             $imagePath = request('image')->store('uploads/category', 'public');
             $image = Image::make(public_path('storage/'.$imagePath))->fit(400, 238);
@@ -49,7 +57,7 @@ class CategoryController extends Controller
             $id = Auth::user()->id;
             $slug = Str::slug($request->name) . '-' . $id . '-by';
         
-             $category =  Auth::user()->posts()->create([
+             $category = Post_Category::create([
                 'user_id' => $id,
                 'name' => $request->name,
                 'image' => $imagePath,
@@ -89,6 +97,9 @@ class CategoryController extends Controller
 
     public function status(Post_Category $post_category, $id)
     {
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'Only users with admin role can perform this action');
+        }
         $category = Post_Category::find($id);
         if($category->status == true){
             $category->update(['status' => false]);

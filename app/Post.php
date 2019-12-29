@@ -30,7 +30,7 @@ class Post extends Model
 
     public function location()
     {
-        return $this->hasMany(Post_Location::class);
+        return $this->belongsTo(Post_Location::class);
     }
 
     protected static function boot()

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\User;
+use App\Post;
 use App\Post_Images;
 use App\Post_Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
@@ -74,5 +76,39 @@ class PostController extends Controller
     public function update( Request $request )
     {
         // dd($request->all());
+    }
+
+    public function index( )
+    {
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
+        if(Auth::user()->status == true){
+            $posts = Post::all();
+            return view('admin.post.index',  compact('posts'));
+        }
+        else{
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
+    }
+
+    public function status(Post $post, $id)
+    {
+        if(Gate::denies('edit-user')){
+            return redirect()->back()->with('warning', 'Only users with admin role can perform this action');
+        }
+        $post = Post::find($id);
+        if($post->status == true){
+            $post->update(['status' => false]);
+            $post->save();
+            return redirect()->back()->with('success', 'You\'ve Successfully Updated post Status');
+        }
+        else
+        {
+            $post->status = false;
+            $post->update(['status' => true]);
+            $post->save();
+            return redirect()->back()->with('success', 'You\'ve Successfully Updated post Status');
+        }
     }
 }
