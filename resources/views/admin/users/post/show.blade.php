@@ -1,5 +1,34 @@
 @extends('layouts.frontend.app')
 
+<style>
+    .header_text{
+        position: absolute;
+        color: #151414;
+        top: 158px;
+        left: 4px !important;  
+        font-size: 10px;
+        text-transform: capitalize !important;
+    }
+    .related_img{
+        height: 140px !important;
+    }
+
+    .swiper-container {
+        margin: 94px auto !important;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1 !important;
+        background-color: transparent;
+        height: 186px;
+    }
+
+    .customer-img img {
+        border-radius: 7% !important;
+        width: 52px;
+    }
+</style>
 @section('content')
 <div>
         <!-- Swiper -->
@@ -9,9 +38,9 @@
                 <div class="swiper-slide">
                     <a href="{{route('show.post', $post->slug)}}">
                     <figure class="effect-ruby" style="background:transparent">
-                        <img src="/storage/{{$post->image}}" class="img-fluid" alt="img13" />
+                        <img src="/storage/{{$post->image}}" class="img-fluid related_img" alt="img13" />
                         <figcaption>
-                          <h6>{{ str_limit($post->title, $limit = 35, $end = '...') }}</h6>
+                          <h6 class="header_text"><a href="{{route('show.post', $post->slug)}}">{{ str_limit($post->title, $limit = 50, $end = '...') }}</a></h6>
                         </figcaption>
                     </figure> 
                     </a>                  
@@ -26,7 +55,7 @@
         </div>
     </div>
     <!--//END BOOKING -->
-    <section class="reserve-block">
+    <section class="reserve-block" >
         <div class="container">
             <div class="row">
                 <div class="col-md-6">

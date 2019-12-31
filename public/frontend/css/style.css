@@ -65,7 +65,7 @@ p {
    ============================================================== */
 .nav-menu {
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   right: 0;
   left: 0;
@@ -101,7 +101,9 @@ p {
 
 .navbar-light .navbar-toggler {
   color: #fff;
-  border-color: #fff; }
+  border-color: #fff; 
+  position: absolute;
+  right: 0;}
 
 @media (max-width: 992px) {
   .navbar-nav {
@@ -128,7 +130,7 @@ p {
   transition: all 1s ease-in-out; }
 
 .fixed {
-  border-bottom: 1px solid #636363;
+  /* border-bottom: 1px solid #636363; */
   position: fixed;
   top: 0;
   left: 0;
@@ -172,7 +174,14 @@ p {
       width: 40%; } }
   @media (max-width: 480px) {
     .btn-outline-light {
-      width: 100%; } }
+      width: 100%; } 
+      .logo_text {
+        top: 19px;
+        position: relative;
+        font-size: 8px;
+        right: 138px;
+        /* display: none; */
+    }}
   .btn-outline-light:hover {
     color: #000; }
 
@@ -580,8 +589,7 @@ footer {
   @media (max-width: 992px) {
     .map-icon {
       display: inline-block;
-      text-align: right;
-      float: right; } }
+      text-align: right; } }
   @media (max-width: 480px) {
     .map-icon {
       float: left;
@@ -751,6 +759,18 @@ footer {
 
 .customer-content-wrap {
   margin: 0 0 0 135px; }
+      @media (max-width: 815px) {
+      .logo_text {
+        top: 19px;
+        position: relative;
+        font-size: 8px;
+        right: 138px;
+        display: none;
+    }
+    .swiper-container {
+      z-index: -1;
+    }
+  }
   @media (max-width: 992px) {
     .customer-content-wrap {
       margin: 0 0 0 110px; } }
@@ -943,13 +963,21 @@ footer {
       display: none;
       top: 17%;
       left: 0;
-      width: 100%; } }
+      width: 100%; }
+     }
   @media (max-width: 480px) {
     .map-fix {
       top: 24%; } }
   @media (max-width: 365px) {
     .map-fix {
-      top: 29.3%; } }
+      top: 29.3%; } 
+      .logo_text {
+        top: 19px;
+        position: relative;
+        font-size: 8px;
+        right: 138px;
+        display: none;
+    }}
 
 #map {
   height: 100%;

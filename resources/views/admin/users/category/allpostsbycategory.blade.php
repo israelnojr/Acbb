@@ -75,10 +75,12 @@
                             </span>
                             @endif
                             <div class="featured-title-box">
-                               <a href=""> <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6></a>                             
+                            <a href="{{route('show.post', $post->slug)}}"> 
+                                   <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6>
+                                </a>                        
                                 <p class="">
                                     <!-- <strong class="icon-user text-warning"></strong>  -->
-                                    <a href="#" class="text-info" style="margin-right:3px;"> <span class="ti-user">
+                                    <a href="{{ route('user.profile.show', $post->user->id)}}" class="text-info" style="margin-right:3px;"> <span class="ti-user">
                                     </span> {{ str_limit('@' .$post->user->username, $limit = 12, $end = '...') }}</a> 
                                 </p>                           
                                 <span>• </span> <p class="text-danger">Likes: 3</p> <span> • </span>

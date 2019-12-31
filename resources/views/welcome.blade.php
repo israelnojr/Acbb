@@ -106,7 +106,7 @@
                 @foreach($posts as $post)
                 <div class="col-md-4 featured-responsive" style="margin-bottom:20px;">
                     <div class="featured-place-wrap">
-                        <a href="detail.html">
+                        <a href="#">
                             <img src="storage/{{$post->image}}" class="img-fluid" alt="#">
                             @if($post->view_count > 0 && $post->view_count < 10)
                             <span class="featured-rating">
@@ -124,17 +124,19 @@
                             </span>
                             @endif
                             <div class="featured-title-box">
-                               <a href=""> <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6></a>                             
+                               <a href="{{route('show.post', $post->slug)}}"> 
+                                   <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6>
+                                </a>                             
                                 <p class="">
                                     <!-- <strong class="icon-user text-warning"></strong>  -->
-                                    <a href="#" class="text-info" style="margin-right:3px;"> <span class="ti-user">
+                                    <a href="{{ route('user.profile.show', $post->user->id)}}" class="text-info" style="margin-right:3px;"> <span class="ti-user">
                                     </span> {{ str_limit('@' .$post->user->username, $limit = 12, $end = '...') }}</a> 
                                 </p>                           
                                 <span>• </span> <p class="text-danger">Likes: 3</p> <span> • </span>
                                 <p><span>Share: </span> 32</p>
                                 <ul>
                                     <li class="d-flex"><span class="icon-location-pin text-danger"></span>
-                                        <a href=""><p class="text-primary">{{$post->user->localGovern->name}} L.G.A</p></a>
+                                        <a href="#"><p class="text-primary">{{$post->user->localGovern->name}} L.G.A</p></a>
                                     </li>
                                 </ul>
                                 <div class="bottom-icons">
