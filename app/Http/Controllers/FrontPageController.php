@@ -49,4 +49,9 @@ class FrontPageController extends Controller
         $postCategory = Post::where('post_category_id', $post->post_category_id)->get();
         return view('admin.users.post.show', compact('post','postCategory','photos','comments','commentCount','commentUserCount'));
     }
+
+    public function privacy()
+    {
+        return view('privacy');
+    }
 }
