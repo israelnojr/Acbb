@@ -51,7 +51,7 @@
                                     </div>
                                 </form>
                                 <div class="slider-link">
-                                    <a href="#" class="text-danger">Browse Popular</a><span>or</span> <a href="#" class="text-warning">Recently Added</a>
+                                    <a href="#" class="text-white" style="font-size: 23px;">Browse Popular</a><span class="text-danger">or</span> <a href="#" class="text-warning"  style="font-size: 23px;">Recently Added</a>
                                 </div>
                             </div>
                         </div>

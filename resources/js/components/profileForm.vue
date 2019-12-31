@@ -14,57 +14,73 @@
                         </div>
                         <div class="modal-body">
                             <form action="">
+
                                 <div class="form-group">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" v-model="form.name" name="name" 
+                                    <label for="mother_name">Mother's Maiden Name</label>
+                                    <input type="text" v-model="form.username" name="mother_name" 
                                     class="form-control" :class="{ 'is-invalid': 
-                                    form.errors.has('name') }" >
-                                    <has-error :form="form" field="name"></has-error>
+                                    form.errors.has('mother_name') }" >
+                                    <has-error :form="form" field="mother_name"></has-error>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="username">UserName</label>
-                                    <input type="text" v-model="form.username" name="username" 
+                                    <label for="date_of_birth">Date of Birth</label>
+                                    <input type="date" v-model="form.date_of_birth" name="date_of_birth" 
                                     class="form-control" :class="{ 'is-invalid': 
-                                    form.errors.has('username') }" >
-                                    <has-error :form="form" field="username"></has-error>
+                                    form.errors.has('date_of_birth') }" >
+                                    <has-error :form="form" field="date_of_birth"></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <label for="occupation">Occupation</label>
+                                    <input type="text" v-model="form.occupation" name="occupation" 
+                                    class="form-control" :class="{ 'is-invalid': 
+                                    form.errors.has('occupation') }" >
+                                    <has-error :form="form" field="occupation"></has-error>
+                                </div>
+                                <div class="form-group">
+                                    <label for="front_pvc">Upload Front PVC</label>
+                                    <input type="file"  name="front_pvc" 
+                                    class="form-control" :class="{ 'is-invalid': 
+                                    form.errors.has('front_pvc') }" >
+                                    <has-error :form="form" field="front_pvc"></has-error>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="text" v-model="form.email" name="email" 
+                                    <label for="back_pvc">Upload Back PVC</label>
+                                    <input type="file" name="back_pvc" 
                                     class="form-control" :class="{ 'is-invalid': 
-                                    form.errors.has('email') }" >
-                                    <has-error :form="form" field="email"></has-error>
+                                    form.errors.has('back_pvc') }" >
+                                    <has-error :form="form" field="back_pvc"></has-error>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Mobile Number</label>
-                                    <input type="text" v-model="form.phone" name="phone" 
+                                    <label for="ward">what is your ward</label>
+                                    <input type="text" v-model="form.ward" name="ward" 
                                     class="form-control" :class="{ 'is-invalid': 
-                                    form.errors.has('phone') }" >
-                                    <has-error :form="form" field="phone"></has-error>
+                                    form.errors.has('ward') }" >
+                                    <has-error :form="form" field="ward"></has-error>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="phone">L G A </label>
-                                    <select type="text" v-model="form.bio" name="bio" 
-                                        class="form-control" :class="{ 'is-invalid': 
-                                        form.errors.has('bio') }">
-                                        <option value="">Choose your Local Goverment</option>
-                                    </select>
-                                    <has-error :form="form" field="bio"></has-error>
-                                </div>
-                                 <div class="form-group">
-                                    <label for="phone">About Me</label>
-                                    <textarea type="text" v-model="form.bio" name="bio" 
+                                    <label for="account_number">Accout Number</label>
+                                    <input type="number" v-model="form.account_number" name="account_number" 
                                     class="form-control" :class="{ 'is-invalid': 
-                                    form.errors.has('bio') }"></textarea>
-                                    <has-error :form="form" field="bio"></has-error>
+                                    form.errors.has('account_number') }" >
+                                    <has-error :form="form" field="account_number"></has-error>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="bank_name">Bank Name</label>
+                                    <input type="text" v-model="form.bank_name" name="bank_name" 
+                                    class="form-control" :class="{ 'is-invalid': 
+                                    form.errors.has('bank_name') }" >
+                                    <has-error :form="form" field="bank_name"></has-error>
+                                </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Send</button>
+                            <button type="button" class="btn btn-primary">Proceed</button>
                         </div>
                     </div>
                 </div>
