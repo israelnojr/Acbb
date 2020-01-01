@@ -14,12 +14,13 @@ class Profile extends Model
         'address',
         'ward',
         'bio',
+        'town_id'
     ];
 
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function town()

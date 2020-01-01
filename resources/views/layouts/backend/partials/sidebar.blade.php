@@ -58,9 +58,7 @@
                         @can('edit-user')
                         <li><i class="fa fa-adjust"></i><a href="{{route('user.post.index')}}">All Posts</a></li>
                         @endcan
-                        @can('dashboardPermission')
-                        <li><i class="fa fa-adjust"></i><a href="{{route('admin.mycategory.category')}}">My Posts</a></li>
-                        @endcan
+                        <li><i class="fa fa-adjust"></i><a href="{{route('user.post.myposts')}}">My Posts</a></li>
                     </ul>
                 </li>    
                     

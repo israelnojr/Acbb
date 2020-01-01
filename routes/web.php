@@ -41,10 +41,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group( function(){
 });
 
 Route::namespace('User')->prefix('user')->name('user.')->group( function(){
-    Route::get('create/post', 'PostController@createPost')->name('create.post');
+    Route::get('create/post', 'PostController@createPost')->name('create.post')->middleware('update-post');
     Route::post('create/post', 'PostController@store')->name('post.store');
     Route::post('edit/post', 'PostController@update')->name('post.update');
     Route::get('posts', 'PostController@index')->name('post.index');
+    Route::get('my-posts', 'PostController@myPosts')->name('post.myposts');
     Route::patch('posts-status/{id}', 'PostController@status')->name('post.status');
 
     Route::get('post/comment/{id}', 'CommentController@create')->name('create.comment');

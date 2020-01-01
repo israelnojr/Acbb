@@ -111,4 +111,16 @@ class PostController extends Controller
             return redirect()->back()->with('success', 'You\'ve Successfully Updated post Status');
         }
     }
+
+    public function myPosts()
+    {
+        $id = Auth::user()->id;
+        if(Auth::user()->status == true){
+            $posts = Post::where('user_id', $id)->get();
+            return view('admin.users.post.myposts',  compact('posts'));
+        }
+        else{
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
+    }
 }
