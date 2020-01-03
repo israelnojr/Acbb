@@ -353,12 +353,15 @@ p {
   @media (max-width: 480px) {
     .featured-title-box {
       padding: 22px 14px; } }
-  .featured-title-box h6 {
-    overflow: hidden;
-    white-space: nowrap;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    margin-bottom: 5px; }
+      
+    .featured-title-box h6 {
+      overflow: hidden;
+      /* white-space: nowrap; */
+      /* -o-text-overflow: ellipsis; */
+      /* text-overflow: ellipsis; */
+      margin-bottom: 5px;
+      text-transform: capitalize;
+  }
   .featured-title-box p {
     color: #9fa9b9;
     display: inline-block;

@@ -86,7 +86,9 @@
                         <label for="town_id" class="col-md-8 col-form-label text-md-left">{{ __('Town') }}</label>
                             <div class="col-md-12">
                                 <select type="text"  name="town_id"  class="form-control">
-                                    <!-- <option value="">Choose your Town</option> -->
+                                @if($profile->town) <option value="{{$profile->town->id}}">{{$profile->town->name}}</option>
+                                 @else <option value="">Choose your Town</option>
+                                @endif
                                     @foreach($town as $tw)
                                         <option value="{{$tw->id}}">{{$tw->name}}</option>v
                                     @endforeach

@@ -37,10 +37,10 @@
                                         </td>
                                         @endcan
                                         <td class="d-flex justify-content-space-between"> 
-                                            <a href="" class="btn btn-success">Edit</a>
-                                            <form action="" method="post">
+                                        <a href="{{ route('user.post.edit', $post->slug)}}" class="btn btn-success">Edit</a>
+                                            <form action="{{route('user.post.delete', $post->id )}}" method="post">
                                                 @csrf() @method('delete')
-                                                <button type="submit" class="btn btn-danger ml-1 mr-1">Delete</button>
+                                                <button type="submit" class="btn btn-danger ml-1 mr-1">Trash</button>
                                             </form>
                                             <a href="{{route('show.post', $post->slug)}}" class="btn btn-success">Show</a>
                                         </td>

@@ -6,6 +6,7 @@ use App\Town;
 use App\User;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -39,8 +40,7 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
         return view('admin.users.profile', compact('profile'));
     }
-
-    
+ 
     public function edit($id)
     {
         $profile = Profile::find($id);
@@ -73,6 +73,13 @@ class ProfileController extends Controller
             $profileData,
             $imageArray ?? []
         ));
+
+        $id = Auth::user()->id;
+        DB::table('users')->where('id', $id)->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
         return redirect()->route('user.profile.show', Auth::user()->id)->with('success', 'Profile Updated Sucessfully');
     }
 

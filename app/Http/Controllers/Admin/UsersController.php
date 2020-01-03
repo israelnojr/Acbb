@@ -81,7 +81,6 @@ class UsersController extends Controller
       return redirect()->route('admin.users.index')->with('success', 'You\'ve Succesfffully Updated user');
     }
 
-    
     public function destroy(User $user)
     {
         if(Gate::denies('delete-user')){

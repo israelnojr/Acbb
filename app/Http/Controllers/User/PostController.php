@@ -6,6 +6,7 @@ use App\Post_Images;
 use App\Post_Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -43,7 +44,7 @@ class PostController extends Controller
             ];
             $request->validate($post);
             $imagePath = request('image')->store('uploads/post', 'public');
-            $image = Image::make(public_path('storage/'.$imagePath))->fit(400, 238);
+            $image = Image::make(public_path('storage/'.$imagePath))->fit(672, 414);
             $image->save();
             $id = Auth::user()->id;
             $slug = Str::slug($request->title) . '-' . $id . '-by';
@@ -67,15 +68,69 @@ class PostController extends Controller
                 ]);
             }
 
-            return redirect()->back()->with('success', 'Post Successfully Created');
+            return redirect()->route('user.post.myposts')->with('success', 'Post Created Sucessfully');
         }
         else{
             return redirect()->back()->with('warning', 'You not allowed to perform this action');
         }
     }
-    public function update( Request $request )
+    public function edit( Request $request, $slug)
     {
-        // dd($request->all());
+        if(Auth::user()->status == true){
+            $post = Post::where('slug', $slug)->first();
+            $categories = Post_Category::where('status', true)->get();
+            return view('admin.post.edit', compact('post','categories'));
+        }
+        else{
+            return redirect()->back()->with('warning', 'Account is either disabled, ban or inactive., You\'re not allowed to perform this action');
+        }
+    }
+
+    public function update( Request $request, $slug)
+    {   
+        if(Auth::user()->status == true){
+            $postData = [
+                'title' => ['required', 'max:255'],
+                'image' =>['image', 'max:1999'],
+                'post_category_id' => 'required',
+                'content' => 'required',
+                'photos' => 'array',
+                'photos.*' => ['image', 'max:1999']
+            ];
+            $request->validate($postData);
+
+            if(request('image')){
+                $imagePath = request('image')->store('profile', 'public');
+                $image = Image::make(public_Path('storage/'.$imagePath))->fit(672, 414);
+                $image->save();
+            }
+            $post = Post::where('slug', $slug)->first();
+            $id = $post->user->id;
+            $slug = Str::slug($request->title) . '-' . $id . '-by';
+            Auth::user()->posts()->update([
+                'title' => $request->title,
+                'post_category_id' => $request->post_category_id,
+                'content' => $request->content,
+                'image' => request('image') ? $imagePath : $post->image, 
+                'slug' => $slug.'-'.Str::random(5), 
+            ]);
+
+            if(request('photos')){
+                foreach ($request->photos as $photo) {
+                    $filename = $photo->store('uploads/post', 'public');
+                    $photos = Image::make(public_path('storage/'.$filename))->fit(672, 414);
+                    $photos->save();
+                    DB::table('post__images')->where('post_id', $post->id)->update([
+                        'filename' => $filename
+                    ]);
+                }
+            }
+
+            return redirect()->route('user.post.myposts')->with('success', 'Post Updated Sucessfully');
+        }
+        else{
+            return redirect()->back()->with('warning', 'You not allowed to perform this action');
+        }
     }
 
     public function index( )

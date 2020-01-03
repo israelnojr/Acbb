@@ -15,7 +15,7 @@ class FrontPageController extends Controller
 {
     public function welcome()
     {
-        $categories = Post_Category::where('status', true)->inRandomOrder()->limit(4)->get();
+        $categories = Post_Category::where('status', true)->inRandomOrder()->limit(6)->get();
         $posts = Post::where('status', true)->inRandomOrder()->limit(6)->get();
         $locations = Local_government::where('state_id', 4)->inRandomOrder()->limit(8)->get();
         return view('welcome', compact('posts', 'categories', 'locations'));

@@ -14,7 +14,7 @@ class Profile extends Model
         'address',
         'ward',
         'bio',
-        'town_id'
+        'town_id',
     ];
 
 

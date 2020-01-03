@@ -125,7 +125,7 @@
                             @endif
                             <div class="featured-title-box">
                                <a href="{{route('show.post', $post->slug)}}"> 
-                                   <h6 class="text-success">{{ str_limit($post->title, $limit = 150, $end = '...') }}</h6>
+                                   <h6 class="text-success">{{ucfirst( str_limit($post->title, $limit = 200, $end = '...')) }}</h6>
                                 </a>                             
                                 <p class="">
                                     <!-- <strong class="icon-user text-warning"></strong>  -->
